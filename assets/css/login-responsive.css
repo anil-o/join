@@ -1,0 +1,259 @@
+@media(max-width: 850px) {
+    .login-window {
+        width: 90%;
+        gap: unset;
+        height: 380px;
+    }
+
+    .login-window form {
+        width: 380px;
+    }
+
+    .login-window-failed {
+        height: 440px;
+    }
+
+    .login-headline {
+        font-size: 35px;
+        margin-bottom: 35px;
+        width: 380px;
+    }
+
+    .login-input-image {
+        right: 16px;
+        top: 100px;
+    }
+
+    .guestlogin-button {
+        position: relative;
+        right: -95px;
+        bottom: 51px;
+    }
+
+    .signup-window {
+        width: 90%;
+        gap: unset;
+    }
+
+    .signup-input-image {
+        position: relative;
+        right: -344px;
+        top: -35px;
+    }
+
+    .forgot-password-window {
+        width: 90%;
+    }
+
+    .forgot-password-window span {
+        width: 400px;
+        font-size: 18px;
+    }
+
+    .forgot-password-headline {
+        font-size: 35px;
+        width: 380px;
+    }
+
+    .reset-password-window {
+        width: 90%;
+    }
+
+    .reset-password-headline {
+        font-size: 35px;
+        width: 380px;
+    }
+
+    .reset-password-window span {
+        font-size: 18px;
+    }
+
+    .new-password-input-image {
+        position: relative;
+        right: -344px;
+        top: -35px;
+    }
+
+    .confirm-password-input-image {
+        position: relative;
+        right: -344px;
+        top: -35px;
+    }
+
+    .login-window-input-passwort-container {
+        height: 51px;
+    }
+
+    .login-window-input-email {
+        width: 380px;
+    }
+
+    .login-window-input-passwort {
+        width: 380px;
+    }
+
+    .login-window-input-username {
+        width: 380px;
+    }
+
+    .login-window-input-passwort-container {
+        height: 51px;
+    }
+
+}
+
+
+@media(max-width: 535px) {
+
+    @keyframes logoSize {
+        from {
+            transform: translateY(calc(100vh / 2)) translateX(calc(100vw / 2));
+            ;
+        }
+
+        to {
+            transform: scale(0.6);
+        }
+    }
+
+    .login-window {
+        height: 430px;
+        padding: 20px 0px;
+    }
+
+    .login-window-failed {
+        height: 470px;
+    }
+
+    .login-window form {
+        gap: 20px;
+        width: 280px;
+    }
+
+    .login-headline {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        width: 280px;
+    }
+
+    .user-sign-up {
+        display: none;
+    }
+
+    .user-sign-up-end {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 5%;
+        margin-top: 5%;
+    }
+
+    .user-sign-up-end button {
+        padding: 4px 16px;
+        gap: 10px;
+        width: 91px;
+        height: 51px;
+        border: 1px solid #2A3647;
+        background: #2A3647;
+        border-radius: 8px;
+        color: #FFFFFF;
+        font-size: 16px;
+    }
+
+    .login-input-image {
+        right: 197px;
+        top: 86px;
+    }
+
+    .remember-me-forgot-my-passwort {
+        gap: 20px;
+        flex-direction: column-reverse;
+    }
+
+    .login-guestlogin {
+        right: unset;
+    }
+
+    .guestlogin-button {
+        right: 0px;
+        bottom: -20px;
+    }
+
+    .signup-window form {
+        gap: 20px;
+    }
+
+    .signup-input-image {
+        right: -249px;
+    }
+
+    .signup-window {
+        padding: 20px 0px;
+    }
+
+    .forgot-password-window {
+        padding: 20px 0px;
+        gap: 20px;
+    }
+
+    .reset-password-window {
+        padding: 20px 0px;
+        gap: 20px;
+    }
+
+    .forgot-password-headline {
+        padding-bottom: 20px;
+        width: 280px;
+    }
+
+    .login-window-input-email {
+        width: 280px;
+        font-size: 18px;
+    }
+
+    .login-window-input-passwort {
+        width: 280px;
+        font-size: 18px;
+    }
+
+    .login-window-input-username {
+        width: 280px;
+        font-size: 18px;
+    }
+
+    .forgot-password-window span {
+        width: 280px;
+        gap: 20px;
+    }
+
+    .reset-password-headline {
+        width: 280px;
+        padding-bottom: 20px;
+    }
+
+    .reset-password-window span {
+        width: 280px;
+        padding-bottom: 20px;
+    }
+
+    .reset-password-window form {
+        gap: 20px;
+    }
+
+    .new-password-input-image {
+        right: -245px;
+    }
+
+    .confirm-password-input-image {
+        right: -245px;
+    }
+
+    .forgot-password-window form {
+        gap: 20px;
+    }
+
+    .user-sign-up-end-off {
+        display: none;
+    }
+}

@@ -1,0 +1,169 @@
+.start-screen-logo-big {
+    animation-fill-mode: forwards;
+    animation-name: logoSize;
+    animation-duration: 2s;
+}
+
+@keyframes logoSize {
+    from {
+        transform: translateY(calc(100vh / 2)) translateX(calc(100vw / 2));
+        ;
+    }
+
+    to {
+        transform: scale(0.8);
+    }
+}
+
+.confirm-password-button {
+    width: 300px;
+    height: 51px;
+    background: #2A3647;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 21px;
+    color: #FFFFFF;
+    position: relative;
+    animation-fill-mode: forwards;
+    animation-name: confirm-password-button;
+    animation-duration: 1s;
+}
+
+.confirm-signup-button {
+    width: 300px;
+    height: 51px;
+    background: #2A3647;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 21px;
+    color: #FFFFFF;
+    position: relative;
+    animation-fill-mode: forwards;
+    animation-name: confirm-password-button;
+    animation-duration: 1s;
+    box-sizing: content-box;
+    padding: 8px;
+}
+
+@keyframes confirm-password-button {
+    from {
+        top: 700px;
+    }
+
+    to {
+        top: 0px;
+    }
+}
+
+.red-font {
+    color: red !important;
+}
+
+.user-sign-up button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+.login-button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+.guestlogin-button:hover {
+    border: 2px solid #29ABE2;
+    color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+}
+
+.signup-button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+.forgot-password-button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+.confirm-password-button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+.confirm-signup-button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+.signup-input-image {
+    width: 20px;
+    height: 20px;
+    background: url(../img/login/lock.png) no-repeat;
+    content: ' ';
+    position: absolute;
+    right: 135px;
+    top: 355px;
+    cursor: pointer;
+}
+
+.new-password-input-image {
+    width: 20px;
+    height: 20px;
+    background: url(../img/login/lock.png) no-repeat;
+    content: ' ';
+    position: absolute;
+    right: 200px;
+    top: 245px;
+    cursor: pointer;
+}
+
+.confirm-password-input-image {
+    width: 20px;
+    height: 20px;
+    background: url(../img/login/lock.png) no-repeat;
+    content: ' ';
+    position: absolute;
+    right: 200px;
+    top: 330px;
+    cursor: pointer;
+}
+
+.login-input-image {
+    width: 20px;
+    height: 20px;
+    background: url(../img/login/lock.png) no-repeat;
+    content: ' ';
+    position: absolute;
+    right: 135px;
+    top: 100px;
+    cursor: pointer;
+}
+
+.login-password-visibilty-on {
+    background-image: url(../img/login/visibility_on.png) !important;
+    width: 20px !important;
+    height: 20px !important;
+    box-sizing: border-box !important;
+    background-size: contain !important;
+}
+
+.login-password-visibilty-off {
+    background-image: url(../img/login/visibility_off.png) !important;
+    width: 20px !important;
+    height: 20px !important;
+    box-sizing: border-box !important;
+    background-size: contain !important;
+}
