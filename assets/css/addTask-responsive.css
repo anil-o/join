@@ -591,15 +591,18 @@
     }
 
     .urgent-popup {
-        width: 127px;
+        width: 125px;
+        font-size: 15px;
     }
 
     .medium-popup {
-        width: 127px;
+        width: 125px;
+        font-size: 15px;
     }
 
     .low-popup {
-        width: 127px;
+        width: 125px;
+        font-size: 15px;
     }
 
     .prio-popup {
