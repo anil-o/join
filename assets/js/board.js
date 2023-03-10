@@ -616,3 +616,16 @@ function addActiveClass1() {
     document.getElementById('addActiveClass-1').classList.add('active');
     document.getElementById('addActiveClassResponsive-1').classList.add('active');
 }
+
+ /**
+ * Hide arrow when selected
+ */
+ function hideBlackArrowBoard(id, section) {
+    let currentSection = document.getElementById(section);
+    let currentId = document.getElementById(id);
+    if(currentSection.value != "") {
+        currentId.classList.add('hide-arrow');
+    } else {
+        currentId.classList.remove('hide-arrow');
+    }
+}

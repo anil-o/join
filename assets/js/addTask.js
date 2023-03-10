@@ -116,3 +116,16 @@ function changeColorOfCross() {
         document.getElementById('sidebar-main-frame').classList.add('sidebar-fit');
     }, 150);
 }
+
+ /**
+ * Hide arrow when selected
+ */
+function hideBlackArrow(id, section) {
+    let currentSection = document.getElementById(section);
+    let currentId = document.getElementById(id);
+    if(currentSection.value != "") {
+        currentId.classList.add('hide-arrow');
+    } else {
+        currentId.classList.remove('hide-arrow');
+    }
+}

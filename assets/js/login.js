@@ -20,22 +20,26 @@ async function login() { // Log in when signed up
     let email = document.getElementById('login-window-input-email').value;
     let password = document.getElementById('login-window-input-passwort').value;
     hideFailedLoginAndUserSignUP();
+    let foundUser;
     for (let i = 0; i < users.length; i++) {
         let userName = users[i]['name'];
         let userEmail = users[i]['email'];
         let userPassword = users[i]['password'];
         if (email == userEmail && password == userPassword) {
-            activeUser.push(userName);
-            activeUser.push(userEmail);
-            activeUser.push(userPassword);
-            await backend.setItem('activeUser', JSON.stringify(activeUser));
-            window.open("summary.html", "_self");
-        } else {
-            document.getElementById('failed-login').classList.remove('d-none');
-            document.getElementById('login-window').classList.add('login-window-failed');
+            foundUser = users[i];
+            break;
         }
     }
-
+    if (foundUser) {
+        activeUser.push(foundUser.name);
+        activeUser.push(foundUser.email);
+        activeUser.push(foundUser.password);
+        await backend.setItem('activeUser', JSON.stringify(activeUser));
+        await window.open('summary.html', '_self');
+    } else {
+        document.getElementById('failed-login').classList.remove('d-none');
+        document.getElementById('login-window').classList.add('login-window-failed');
+    }
 }
 
 /**

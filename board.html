@@ -41,16 +41,17 @@
             </div>
             <div class="inputfield-and-button">
                 <div class="inputfield-container">
-                    <input onkeydown="deleteIconInSearchInputField()" onkeyup="loadIconAndLine(); searchFilter();" class="inputfield"
-                        type="text" id="searchTask" name="searchTask" placeholder="Search title of the task">
+                    <input onkeydown="deleteIconInSearchInputField()" onkeyup="loadIconAndLine(); searchFilter();"
+                        class="inputfield" type="text" id="searchTask" name="searchTask"
+                        placeholder="Search title of the task">
                     <div id="line" class="line-container"><span class="line"></span></div>
                     <div id="iconSearch" class="search-container"><img class="icon-search"
                             src="assets/img/board/search-icon.svg"></div>
                 </div>
 
 
-                <button onclick="openForm(event)" class="btn hide-mobile">Add Task <img
-                        class="icon-plus" src="assets/img/board/plus-icon.png"></button>
+                <button onclick="openForm(event)" class="btn hide-mobile">Add Task <img class="icon-plus"
+                        src="assets/img/board/plus-icon.png"></button>
             </div>
         </div>
 
@@ -67,7 +68,8 @@
             </div>
 
             <div ondrop="moveTo('inProgress')" ondragover="allowDrop(event)" class="container-tasks">
-                <div id=" todoChild" onclick="openForm(event)" class="child-container-tasks margin-top-for-more-distance">
+                <div id=" todoChild" onclick="openForm(event)"
+                    class="child-container-tasks margin-top-for-more-distance">
                     <div class="title-area">In Progress</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
@@ -77,7 +79,8 @@
             </div>
 
             <div ondrop="moveTo('awaitingFeedback')" ondragover="allowDrop(event)" class="container-tasks">
-                <div id="todoChild" onclick="openForm(event)" class="child-container-tasks margin-top-for-more-distance">
+                <div id="todoChild" onclick="openForm(event)"
+                    class="child-container-tasks margin-top-for-more-distance">
                     <div class="title-area">Awaiting Feedback</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
@@ -87,7 +90,8 @@
             </div>
 
             <div ondrop="moveTo('done')" ondragover="allowDrop(event)" class="container-tasks">
-                <div id=" todoChild" onclick="openForm(event)" class="child-container-tasks margin-top-for-more-distance">
+                <div id=" todoChild" onclick="openForm(event)"
+                    class="child-container-tasks margin-top-for-more-distance">
                     <div class="title-area">Done</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
@@ -119,27 +123,37 @@
 
                         <div class="margin-popup"><label class="pop-up-child" for="category-popup">Category</label><br>
                         </div>
-                        <select class="category-popup" id="category-popup" onChange="identifySelectedCategory(this);"
-                        required>
-                            <option value="" disabled selected>Select task category</option>
-                            <option value="Sales">Sales</option>
-                            <option value="Design">Design</option>
-                            <option value="Backoffice">Backoffice</option>
-                            <option value="Marketing">Marketing</option>
-                            <option value="IT">IT</option>
-                            <option value="Media">Media</option>
-                        </select><br>
+                        <div onclick="hideBlackArrowBoard('blackArrowCategoryBoard', 'category-popup')"
+                            class="category-parent-div-board">
+                            <select class="category-popup" id="category-popup"
+                                onChange="identifySelectedCategory(this);" required>
+                                <option value="" disabled selected>Select task category</option>
+                                <option value="Sales">Sales</option>
+                                <option value="Design">Design</option>
+                                <option value="Backoffice">Backoffice</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="IT">IT</option>
+                                <option value="Media">Media</option>
+                            </select><br>
+                            <img id="blackArrowCategoryBoard" class="img-arrow-select-board"
+                                src="assets/img/board/vector_arrow_black.png">
+                        </div>
 
                         <div class="margin-popup"><label class="pop-up-child" for="assignedto-popup">Assigned
                                 to</label><br>
                         </div>
-                        <select class="assignedto-popup" id="assignedto-popup" onChange="identifySelectedAssigne(this);"
-                        required>
-                            <option value="" disabled selected>Select contacts to assign</option>
-                            <option value="marcushaas">Marcus Haas</option>
-                            <option value="mariuskatzer">Marius Katzer</option>
-                            <option value="anilorhan">Anil Orhan</option>
-                        </select>
+                        <div onclick="hideBlackArrowBoard('blackArrowPopupBoard', 'assignedto-popup')"
+                            class="assignedto-parent-div-board">
+                            <select class="assignedto-popup" id="assignedto-popup"
+                                onChange="identifySelectedAssigne(this);" required>
+                                <option value="" disabled selected>Select contacts to assign</option>
+                                <option value="marcushaas">Marcus Haas</option>
+                                <option value="mariuskatzer">Marius Katzer</option>
+                                <option value="anilorhan">Anil Orhan</option>
+                            </select>
+                            <img id="blackArrowPopupBoard" class="img-arrow-select-board"
+                                src="assets/img/board/vector_arrow_black.png">
+                        </div>
                     </div>
 
                     <div class="seperate-line-popup hide-mobile">
@@ -148,7 +162,8 @@
 
                     <div>
                         <div class="margin-popup"><label class="pop-up-child" for="duedate">Due Date</label></div>
-                        <input onchange="duedateChangeColor()" class="duedate-popup" type="date" id="duedate" name="duedate" required>
+                        <input onchange="duedateChangeColor()" class="duedate-popup" type="date" id="duedate"
+                            name="duedate" required>
 
                         <div class="margin-popup pop-up-child">Prio</div>
                         <div class="prio-popup">
@@ -179,8 +194,10 @@
                         </div>
 
                         <div class="btn-popup">
-                            <button type="button" onmouseover="changeCrossToBlue()" onmouseleave="changeColorOfCrossToBlack()" onclick="cleanForm()" id="btn-first" class="first-btn hide-mobile">Cancel<img
-                                    id="crossForHoverInBoard" class="cross-popup-btn" src="assets/img/board/close-popup.svg"></button>
+                            <button type="button" onmouseover="changeCrossToBlue()"
+                                onmouseleave="changeColorOfCrossToBlack()" onclick="cleanForm()" id="btn-first"
+                                class="first-btn hide-mobile">Cancel<img id="crossForHoverInBoard"
+                                    class="cross-popup-btn" src="assets/img/board/close-popup.svg"></button>
                             <button type="submit" value="submit" class="second-btn">Create Task<img
                                     src="assets/img/board/hook-popup.svg"></button>
                         </div>

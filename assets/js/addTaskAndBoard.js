@@ -279,11 +279,9 @@ function changeColorAfterCreateTaskReverse() {
 
 
 /**
- * change the category color 
-*/
-function changeColorOfCategory() {
-    let categoryAddColor = document.getElementById('changeColorOfCategory' + j);
-    let category = categoryAddColor.innerText;
+ * selected Category
+ */
+function selectCategory(category, categoryAddColor) {
     if (category == 'Sales') {
         categoryAddColor.classList.add('sales');
     }
@@ -305,30 +303,24 @@ function changeColorOfCategory() {
 }
 
 
+
+/**
+ * change the category color 
+*/
+function changeColorOfCategory() {
+    let categoryAddColor = document.getElementById('changeColorOfCategory' + j);
+    let category = categoryAddColor.innerText;
+    selectCategory(category, categoryAddColor);
+}
+
+
 /**
  * change the category color 
 */
 function changeColorOfCategoryAfterDragAndDrop(i) {
     let categoryAddColor = document.getElementById('changeColorOfCategoryAfterDragAndDrop' + i);
     let category = categoryAddColor.innerText;
-    if (category == 'Sales') {
-        categoryAddColor.classList.add('sales');
-    }
-    if (category == 'Design') {
-        categoryAddColor.classList.add('design');
-    }
-    if (category == 'Backoffice') {
-        categoryAddColor.classList.add('backoffice');
-    }
-    if (category == 'Marketing') {
-        categoryAddColor.classList.add('marketing');
-    }
-    if (category == 'IT') {
-        categoryAddColor.classList.add('it');
-    }
-    if (category == 'Media') {
-        categoryAddColor.classList.add('media');
-    }
+    selectCategory(category, categoryAddColor);
 }
 
 
@@ -341,24 +333,7 @@ function changeColorOfCategoryAfterSearchFilter(i) {
         changeColorOfCategoryAfterDragAndDrop(i);
     } else {
         let category = categoryAddColor.innerText;
-        if (category == 'Sales') {
-            categoryAddColor.classList.add('sales');
-        }
-        if (category == 'Design') {
-            categoryAddColor.classList.add('design');
-        }
-        if (category == 'Backoffice') {
-            categoryAddColor.classList.add('backoffice');
-        }
-        if (category == 'Marketing') {
-            categoryAddColor.classList.add('marketing');
-        }
-        if (category == 'IT') {
-            categoryAddColor.classList.add('it');
-        }
-        if (category == 'Media') {
-            categoryAddColor.classList.add('media');
-        }
+        selectCategory(category, categoryAddColor);
     }
 }
 
@@ -418,22 +393,5 @@ function changePriorShowDetails(i) {
 function changeCategoryShowDetails(i) {
     let categoryAddColor = document.getElementById('categoryOpenTask' + i);
     let category = categoryAddColor.innerText;
-    if (category == 'Sales') {
-        categoryAddColor.classList.add('sales');
-    }
-    if (category == 'Design') {
-        categoryAddColor.classList.add('design');
-    }
-    if (category == 'Backoffice') {
-        categoryAddColor.classList.add('backoffice');
-    }
-    if (category == 'Marketing') {
-        categoryAddColor.classList.add('marketing');
-    }
-    if (category == 'IT') {
-        categoryAddColor.classList.add('it');
-    }
-    if (category == 'Media') {
-        categoryAddColor.classList.add('media');
-    }
+    selectCategory(category, categoryAddColor);
 }

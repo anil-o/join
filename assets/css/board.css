@@ -901,3 +901,34 @@ body {
     border-radius: 58px;
     color: white;
 }
+
+.category-parent-div-board {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.img-arrow-select-board {
+    position: absolute;
+    top: 21px;
+    right: 20px;
+}
+
+.assignedto-parent-div-board {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+select {
+    appearance: none;
+    background-image: url('assets/img/addTask/vector_arrow_black.png');
+    background-repeat: no-repeat;
+    background-position: calc(100% -3px);
+    background-size: 10px;
+    padding-right: 15px;
+}
+
+.hide-arrow {
+    display: none;
+}
