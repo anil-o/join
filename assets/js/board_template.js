@@ -149,14 +149,14 @@ function templateEditShowDetails(i) {
     return `
         <div>
             <div class="margin-popup">
-            <label class="pop-up-child" for="title">Title</label><br>
+            <label class="pop-up-child pop-up-child-edit" for="title">Title</label><br>
             </div>
             <input class="title-popup-edit" type="text" id="titleEdit" name="title" placeholder="Enter a title" required>
         </div>
 
         <div>
             <div class="margin-popup">
-            <label class="pop-up-child" for="descriptionPopup">Description</label><br>
+            <label class="pop-up-child pop-up-child-edit" for="descriptionPopup">Description</label><br>
             </div>
             <textarea class="description-popup-edit" type="text" id="descriptionPopupEdit" name="descriptionPopup" rows="3" cols="20"
             placeholder="Enter a Description" required></textarea>
@@ -164,7 +164,7 @@ function templateEditShowDetails(i) {
 
         <div>
             <div class="margin-popup">
-            <label class="pop-up-child" for="subtaskPopup">Subtask</label><br>
+            <label class="pop-up-child pop-up-child-edit" for="subtaskPopup">Subtask</label><br>
             </div>
             <input class="subtask-popup-edit" type="text" id="subtaskEdit" name="subtaskPopup"
             placeholder="Add a new subtask" required></input>
@@ -172,13 +172,13 @@ function templateEditShowDetails(i) {
 
         <div>
             <div class="margin-popup">
-            <label class="pop-up-child" for="duedate">Due Date</label>
+            <label class="pop-up-child pop-up-child-edit" for="duedate">Due Date</label>
             </div>
             <input class="duedate-popup-edit" type="date" id="duedateEdit" name="duedate" required>
         </div>
 
         <div>
-        <div class="margin-popup pop-up-child">Prio</div>
+        <div class="margin-popup pop-up-child pop-up-child-edit">Prio</div>
         <div class="prio-popup-edit edit-prio-popup">
             <div id="urgentPopupEdit" onclick="changeColorUrgentEdit()" class="urgent-popup urgent-popup-edit">Urgent
                 <div class="urgent-popup-child">
@@ -208,7 +208,7 @@ function templateEditShowDetails(i) {
         </div>
 
         <div>
-        <div class="margin-popup"><label class="pop-up-child" for="assignedto-popup">Assigned
+        <div class="margin-popup"><label class="pop-up-child pop-up-child-edit" for="assignedto-popup">Assigned
                 to</label><br>
         </div>
         <select class="assignedto-popup assignedto-popup-edit" id="assignedEdit" onChange="identifySelectedAssigneEdit(this);">
@@ -220,7 +220,7 @@ function templateEditShowDetails(i) {
         </div>
 
         <div class="hide-status">
-        <div class="margin-popup"><label class="pop-up-child" for="select-status-popup">Status</label><br></div>
+        <div class="margin-popup"><label class="pop-up-child pop-up-child-edit" for="select-status-popup">Status</label><br></div>
         <div class="change-status-container">
         <select id="changeStatus${i}" onclick="changeStatus(${i})" class="change-status">
             <option value="" disabled selected>Select status</option>
