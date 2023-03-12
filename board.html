@@ -123,8 +123,7 @@
 
                         <div class="margin-popup"><label class="pop-up-child" for="category-popup">Category</label><br>
                         </div>
-                        <div onclick="hideBlackArrowBoard('blackArrowCategoryBoard', 'category-popup')"
-                            class="category-parent-div-board">
+                        <div class="category-parent-div-board">
                             <select class="category-popup" id="category-popup"
                                 onChange="identifySelectedCategory(this);" required>
                                 <option value="" disabled selected>Select task category</option>
@@ -135,24 +134,25 @@
                                 <option value="IT">IT</option>
                                 <option value="Media">Media</option>
                             </select><br>
-                            <img id="blackArrowCategoryBoard" class="img-arrow-select-board"
-                                src="assets/img/board/vector_arrow_black.png">
+                            <div class="img-arrow-select-board-div"><img src="assets/img/board/vector_arrow_black.png">
+                            </div>
                         </div>
 
                         <div class="margin-popup"><label class="pop-up-child" for="assignedto-popup">Assigned
                                 to</label><br>
                         </div>
-                        <div onclick="hideBlackArrowBoard('blackArrowPopupBoard', 'assignedto-popup')"
-                            class="assignedto-parent-div-board">
-                            <select class="assignedto-popup" id="assignedto-popup"
-                                onChange="identifySelectedAssigne(this);" required>
-                                <option value="" disabled selected>Select contacts to assign</option>
-                                <option value="marcushaas">Marcus Haas</option>
-                                <option value="mariuskatzer">Marius Katzer</option>
-                                <option value="anilorhan">Anil Orhan</option>
-                            </select>
-                            <img id="blackArrowPopupBoard" class="img-arrow-select-board"
-                                src="assets/img/board/vector_arrow_black.png">
+                        <div class="assignedto-parent-div-board">
+                            <div>
+                                <select class="assignedto-popup" id="assignedto-popup"
+                                    onChange="identifySelectedAssigne(this);" required>
+                                    <option value="" disabled selected>Select contacts to assign</option>
+                                    <option value="marcushaas">Marcus Haas</option>
+                                    <option value="mariuskatzer">Marius Katzer</option>
+                                    <option value="anilorhan">Anil Orhan</option>
+                                </select>
+                            </div>
+                            <div class="img-arrow-select-board-div-assigned"><img src="assets/img/board/vector_arrow_black.png">
+                            </div>
                         </div>
                     </div>
 
@@ -193,6 +193,19 @@
                             </div>
                         </div>
 
+                        <div class="margin-popup"><label class="pop-up-child" for="subtaskPopup">Subtask</label><br>
+                        </div>
+
+                        <div class="parent-subtask-div">
+                            <input class="subtask-popup" type="text" id="subtaskPopup" name="subtaskPopup"
+                                placeholder="Add a new subtask" required></input>
+                            <img class="img-plus-subtask" src="assets/img/board/plus.png">
+                        </div>
+
+                        <input class="checkbox-subtask" type="checkbox" id="subtaskCheckbox" name="subtaskCheckbox"
+                            value="subtask">
+                        <label for="subtaskCheckbox"> Subtask 1</label><br>
+
                         <div class="btn-popup">
                             <button type="button" onmouseover="changeCrossToBlue()"
                                 onmouseleave="changeColorOfCrossToBlack()" onclick="cleanForm()" id="btn-first"
@@ -211,8 +224,10 @@
 
     </div>
 
-    <div id="editOpenTaskDetails" onclick="doNotCloseDiv(event)">
+    <div id="editOpenTaskDetails" class="d-none" onclick="doNotCloseDiv(event)">
+        <div class="edit-content scrollbar-task-edit" id="editContent">
 
+        </div>
     </div>
 </body>
 

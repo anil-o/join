@@ -119,7 +119,6 @@ function changeColorOfCross() {
 
  /**
  * Hide arrow when selected
- */
 function hideBlackArrow(id, section) {
     let currentSection = document.getElementById(section);
     let currentId = document.getElementById(id);
@@ -128,4 +127,4 @@ function hideBlackArrow(id, section) {
     } else {
         currentId.classList.remove('hide-arrow');
     }
-}
+} */

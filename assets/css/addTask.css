@@ -17,7 +17,7 @@ body {
 
 .seperate-line-popup-addTask {
     width: 0px;
-    height: 551px;
+    height: 478px;
     border: 1px solid #D1D1D1;
     margin-left: 60px;
     margin-right: 60px;
@@ -44,6 +44,10 @@ body {
     font-weight: 700;
     font-size: 21px;
     color: white;
+}
+
+.prio-popup-addTask {
+    margin-bottom: 35px;
 }
 
 .urgent-popup-addTask {
@@ -95,6 +99,12 @@ body {
     box-sizing: border-box;
     padding-right: 20px;
     cursor: pointer;
+}
+
+.img-arrow-select-addTask {
+    position: absolute;
+    top: 12px;
+    right: 19px;
 }
 
 #addedTask {

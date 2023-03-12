@@ -110,6 +110,14 @@ function templateOpenTaskDetails(i) {
     <div id="categoryOpenTask${i}" class="category-open-task">${allTasks[i]['category']}</div>
     <div class="title-open-task">${allTasks[i]['title']}</div>
     <div class="description-open-task">${allTasks[i]['description']}</div>
+
+    <div>
+        <div class="subtask-title-open-task">Subtask:</div>
+            <div class="subtask-container-open-task">
+                <div class="subtask-value-open-task">${allTasks[i]['subtask']}</div>
+            </div>
+    </div>
+
     <div class="duedate-open-task">Due date: <span class="date-open-task">${allTasks[i]['duedate']}</span></div>
     <div class="container-priority-open-task">
         <div class="priority-open-task">Priority:</div>
@@ -143,28 +151,36 @@ function templateEditShowDetails(i) {
             <div class="margin-popup">
             <label class="pop-up-child" for="title">Title</label><br>
             </div>
-            <input class="title-popup" type="text" id="titleEdit" name="title" placeholder="Enter a title" required>
+            <input class="title-popup-edit" type="text" id="titleEdit" name="title" placeholder="Enter a title" required>
         </div>
 
         <div>
             <div class="margin-popup">
             <label class="pop-up-child" for="descriptionPopup">Description</label><br>
             </div>
-            <textarea class="description-popup" type="text" id="descriptionPopupEdit" name="descriptionPopup" rows="5" cols="20"
+            <textarea class="description-popup-edit" type="text" id="descriptionPopupEdit" name="descriptionPopup" rows="3" cols="20"
             placeholder="Enter a Description" required></textarea>
+        </div>
+
+        <div>
+            <div class="margin-popup">
+            <label class="pop-up-child" for="subtaskPopup">Subtask</label><br>
+            </div>
+            <input class="subtask-popup-edit" type="text" id="subtaskEdit" name="subtaskPopup"
+            placeholder="Add a new subtask" required></input>
         </div>
 
         <div>
             <div class="margin-popup">
             <label class="pop-up-child" for="duedate">Due Date</label>
             </div>
-            <input class="duedate-popup" type="date" id="duedateEdit" name="duedate" required>
+            <input class="duedate-popup-edit" type="date" id="duedateEdit" name="duedate" required>
         </div>
 
         <div>
         <div class="margin-popup pop-up-child">Prio</div>
-        <div class="prio-popup edit-prio-popup">
-            <div id="urgentPopupEdit" onclick="changeColorUrgentEdit()" class="urgent-popup">Urgent
+        <div class="prio-popup-edit edit-prio-popup">
+            <div id="urgentPopupEdit" onclick="changeColorUrgentEdit()" class="urgent-popup urgent-popup-edit">Urgent
                 <div class="urgent-popup-child">
                     <div class="position-urgent-arrow-popup-first"><img id="urgentFirstPopupEdit"
                             src="assets/img/board/arrow-urgent.svg"></div>
@@ -172,7 +188,7 @@ function templateEditShowDetails(i) {
                             src="assets/img/board/arrow-urgent.svg"></div>
                 </div>
             </div>
-            <div id="mediumPopupEdit" onclick="changeColorEditMedium()" class="medium-popup">Medium
+            <div id="mediumPopupEdit" onclick="changeColorEditMedium()" class="medium-popup medium-popup-edit">Medium
                 <div class="medium-popup-child">
                     <div class="position-medium-arrow-popup-first"><img id="mediumFirstPopupEdit"
                             src="assets/img/board/arrow-medium.svg"></div>
@@ -180,7 +196,7 @@ function templateEditShowDetails(i) {
                             src="assets/img/board/arrow-medium.svg"></div>
                 </div>
             </div>
-            <div id="lowPopupEdit" onclick="changeColorEditLow()" class="low-popup">Low
+            <div id="lowPopupEdit" onclick="changeColorEditLow()" class="low-popup low-popup-edit">Low
                 <div class="low-popup-child">
                     <div class="position-low-arrow-popup-first"><img id="lowFirstPopupEdit"
                             src="assets/img/board/arrow-low.svg"></div>
@@ -195,7 +211,7 @@ function templateEditShowDetails(i) {
         <div class="margin-popup"><label class="pop-up-child" for="assignedto-popup">Assigned
                 to</label><br>
         </div>
-        <select class="assignedto-popup" id="assignedEdit" onChange="identifySelectedAssigneEdit(this);">
+        <select class="assignedto-popup assignedto-popup-edit" id="assignedEdit" onChange="identifySelectedAssigneEdit(this);">
             <option value="" disabled selected>Select contacts to assign</option>
             <option value="marcushaas">Marcus Haas</option>
             <option value="mariuskatzer">Marius Katzer</option>

@@ -15,6 +15,8 @@ let secondNameLetter;
 let currentTitleValue;
 let currentDescriptionValue;
 let currentDuedateValue;
+let currentSubtask;
+let currentSubtaskValue;
 let assignedEdit;
 let firstNameLetterEdit;
 let secondNameLetterEdit;
@@ -129,6 +131,8 @@ function updateArrayTodo() {
     currentDescriptionValue = currentDescription.value;
     currentDuedate = document.getElementById('duedate');
     currentDuedateValue = currentDuedate.value;
+    currentSubtask = document.getElementById('subtaskPopup');
+    currentSubtaskValue = currentSubtask.value;
 }
 
 
@@ -147,6 +151,7 @@ function pushTask() {
         'prior': currentPrior,
         'status': 'todo',
         'id': j,
+        'subtask': currentSubtaskValue,
     };
     allTasks.push(task);
 }
@@ -417,14 +422,14 @@ function openTaskDetails(i, event) {
  * show edit details 
 */
 function editShowDetails(i) {
-    //closeTaskDetails();
     document.getElementById('mainContainer').classList.add('hide-mobile');
     document.getElementById('overlay').classList.add('hide-mobile');
     document.getElementById('overlay').classList.add('overlay-bg');
     let edit = document.getElementById('editOpenTaskDetails');
     edit.classList.add('open-position-for-edit');
     edit.classList.remove('d-none');
-    edit.innerHTML = templateEditShowDetails(i);
+    let editContentDiv = document.getElementById('editContent');
+    editContentDiv.innerHTML = templateEditShowDetails(i);
     let titleEdit = document.getElementById('titleEdit');
     titleEdit.value = allTasks[i]['title'];
     let descriptionEdit = document.getElementById('descriptionPopupEdit');
@@ -433,6 +438,8 @@ function editShowDetails(i) {
     duedateEdit.value = allTasks[i]['duedate'];
     let profile = document.getElementById('profileAssignedEdit' + i);
     profile.innerHTML = `${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}`;
+    let subtasksEdit = document.getElementById('subtaskEdit');
+    subtasksEdit.value = allTasks[i]['subtask'];
     changeBgColorOfInitialLettersEdit(i);
     changePriorColorByEdit(i);
 }
@@ -457,6 +464,8 @@ function saveEditDetails(i) {
     allTasks[i]['description'] = descriptionEdit.value;
     let duedateEdit = document.getElementById('duedateEdit');
     allTasks[i]['duedate'] = duedateEdit.value;
+    let subtasksEdit = document.getElementById('subtaskEdit');
+    allTasks[i]['subtask'] = subtasksEdit.value;
     if (assignedEdit != undefined) {
         allTasks[i]['firstLetter'] = firstNameLetterEdit;
         allTasks[i]['secondLetter'] = secondNameLetterEdit;
@@ -619,7 +628,6 @@ function addActiveClass1() {
 
  /**
  * Hide arrow when selected
- */
  function hideBlackArrowBoard(id, section) {
     let currentSection = document.getElementById(section);
     let currentId = document.getElementById(id);
@@ -628,4 +636,4 @@ function addActiveClass1() {
     } else {
         currentId.classList.remove('hide-arrow');
     }
-}
+} */

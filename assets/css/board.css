@@ -195,6 +195,18 @@ body {
     width: 22px;
 }
 
+.parent-subtask-div {
+    position: relative;
+}
+
+.img-plus-subtask {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    width: 20px;
+    height: 20px
+}
+
 .box {
     background: #FFFFFF;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
@@ -342,6 +354,24 @@ body {
     outline: none;
 }
 
+.subtask-popup {
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-weight: 400;
+    font-size: 21px;
+    width: 428px;
+    height: 51px;
+    outline: none;
+}
+
+.subtask-popup::placeholder {
+    color: #D1D1D1;
+}
+
 .margin-popup {
     margin-bottom: 4px;
 }
@@ -455,7 +485,6 @@ body {
 .edit-open-task-okay-and-hook {
     display: flex;
     color: white;
-    display: flex;
     align-items: center;
     gap: 6px;
     width: 57px;
@@ -514,6 +543,7 @@ body {
 
 .prio-popup {
     display: flex;
+    margin-bottom: 35px;
 }
 
 .urgent-popup {
@@ -650,7 +680,7 @@ body {
 .btn-popup {
     display: flex;
     justify-content: flex-end;
-    margin-top: 270px;
+    margin-top: 65px;
 }
 
 .first-btn {
@@ -746,16 +776,16 @@ body {
 
 .open-position-for-edit {
     position: absolute;
-    top: 100px;
+    top: 85px;
     left: 650px;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     cursor: pointer;
     width: 450px;
-    padding: 25px;
     gap: 25px;
     z-index: 2;
+    padding: 25px;
     min-height: 770px;
 }
 
@@ -873,8 +903,9 @@ body {
 
 .person-and-profile-assigned-open-task-container {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
+    width: 430px;
 }
 
 .person-and-profile-assigned-open-task-container-hook {
@@ -882,6 +913,7 @@ body {
     align-items: flex-end;
     justify-content: space-between;
     margin-right: 20px;
+    margin-bottom: 29px;
 }
 
 .person-assigned-open-task-container {
@@ -908,9 +940,15 @@ body {
     position: relative;
 }
 
-.img-arrow-select-board {
-    position: absolute;
-    top: 21px;
+.img-arrow-select-board-div {
+    position: absolute !important;
+    top: 12px;
+    right: 20px;
+}
+
+.img-arrow-select-board-div-assigned {
+    position: absolute !important;
+    top: 12px;
     right: 20px;
 }
 
@@ -931,4 +969,95 @@ select {
 
 .hide-arrow {
     display: none;
+}
+
+.subtask-container-open-task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    margin-bottom: 35px;
+    word-break: break-word;
+}
+
+.subtask-title-open-task {
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+}
+
+.subtask-value-open-task {
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+}
+
+.title-popup-edit {
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 12px;
+    font-weight: 400;
+    font-size: 21px;
+    width: 422px;
+    height: 51px;
+    outline: none;
+}
+
+.description-popup-edit {
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    padding: 10px;
+    margin-bottom: 12px;
+    font-weight: 400;
+    font-size: 21px;
+    border-radius: 10px;
+    width: 422px;
+    box-sizing: border-box;
+    resize: none;
+    outline: none;
+}
+
+.subtask-popup-edit {
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 12px;
+    font-weight: 400;
+    font-size: 21px;
+    width: 428px;
+    height: 51px;
+    outline: none;
+}
+
+.duedate-popup-edit {
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 12px;
+    color: #D1D1D1;
+    font-weight: 400;
+    font-size: 21px;
+    width: 428px;
+    height: 51px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.prio-popup-edit {
+    display: flex;
+    margin-bottom: 12px;
+}
+
+.edit-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

@@ -31,7 +31,7 @@
 
     <div w3-include-html="assets/templates/sidebar.html"></div>
 
-    <div class="main-container-addTask">
+    <div class="main-container-addTask scrollbar-task-addTask ">
         <div class="text-header text-header-addTask">Add Task</div>
 
         <form onsubmit="createTodoForBoard(); return false;" class="container-inputfield-addTask">
@@ -46,13 +46,13 @@
                             for="descriptionPopup">Description</label><br>
                     </div>
                     <textarea class="description-popup description-popup-addTask" type="text" id="descriptionPopup"
-                        name="descriptionPopup" rows="5" cols="20" placeholder="Enter a Description"
+                        name="descriptionPopup" rows="3" cols="20" placeholder="Enter a Description"
                         required></textarea>
 
                     <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask"
                             for="category-popup">Category</label><br>
                     </div>
-                    <div onclick="hideBlackArrow('blackArrowCategory', 'category-popup')" class="category-parent-div">
+                    <div class="category-parent-div">
                         <select class="category-popup category-popup-addTask" id="category-popup"
                             onChange="identifySelectedCategory(this);" required>
                             <option value="" disabled selected>Select task category</option>
@@ -63,14 +63,14 @@
                             <option value="IT">IT</option>
                             <option value="Media">Media</option>
                         </select><br>
-                        <img id="blackArrowCategory" class="img-arrow-select" src="assets/img/addTask/vector_arrow_black.png">
+                        <div class="img-arrow-select-addTask"><img src="assets/img/addTask/vector_arrow_black.png"></div>
                     </div>
 
                     <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask"
                             for="assignedto-popup">Assigned
                             to</label><br>
                     </div>
-                    <div onclick="hideBlackArrow('blackArrowPopup', 'assignedto-popup')" class="assignedto-parent-div">
+                    <div class="assignedto-parent-div">
                         <select class="assignedto-popup assignedto-popup-addTask" id="assignedto-popup"
                             onChange="identifySelectedAssigne(this);" required>
                             <option value="" disabled selected>Select contacts to assign</option>
@@ -78,7 +78,7 @@
                             <option value="mariuskatzer">Marius Katzer</option>
                             <option value="anilorhan">Anil Orhan</option>
                         </select>
-                        <img id="blackArrowPopup" class="img-arrow-select" src="assets/img/addTask/vector_arrow_black.png">
+                        <div class="img-arrow-select-board-div-assigned"><img src="assets/img/addTask/vector_arrow_black.png"></div>
                     </div>
                 </div>
 
@@ -119,6 +119,18 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask"
+                            for="subtaskPopup">Subtask</label><br>
+                    </div>
+                    <div class="parent-subtask-div">
+                        <input class="subtask-popup subtask-popup-addTask" type="text" id="subtaskPopup"
+                            name="subtaskPopup" placeholder="Add a new subtask" required></input>
+                        <img class="img-plus-subtask" src="assets/img/addTask/plus.png">
+                    </div>
+                    <input class="checkbox-subtask" type="checkbox" id="subtaskCheckbox" name="subtaskCheckbox"
+                        value="subtask">
+                    <label for="subtaskCheckbox"> Subtask 1</label><br>
 
                     <div class="btn-popup btn-popup-addTask">
                         <button type="button" onmouseover="changeColorOfCross()"
