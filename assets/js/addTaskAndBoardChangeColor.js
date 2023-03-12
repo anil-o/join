@@ -2,15 +2,22 @@
 * change colors depend on initial letters
 */
 function changeBgColorOfInitialLettersEdit(i) {
-    if (allTasks[i]['firstLetter'] == 'A' && allTasks[i]['secondLetter'] == 'O') {
+    if (changeBgColorDependOnFirstAndSecondLetterIndex(i)) {
         document.getElementById('profileAssignedEdit' + i).classList.add('assigned-for-initial-letters-first');
     }
-    if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'H') {
+    if (changeBgColorDependOnFirstAndSecondLetterSecondIndex(i)) {
         document.getElementById('profileAssignedEdit' + i).classList.add('assigned-for-initial-letters-second');
     }
-    if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'K') {
+    if (changeBgColorDependOnFirstAndSecondLetterThirdIndex(i)) {
         document.getElementById('profileAssignedEdit' + i).classList.add('assigned-for-initial-letters-third');
     }
+}
+
+/**
+* change the color depend on the inital letters
+*/
+function changeBgColorDependOnFirstAndSecondLetterIndex(i) {
+    return allTasks[i]['firstLetter'] == 'A' && allTasks[i]['secondLetter'] == 'O';
 }
 
 
@@ -62,6 +69,28 @@ function changeColorEditMedium() {
     changeColorEditMediumReverse();
 }
 
+/**
+* change the color depend on the inital letters 
+*/
+function changeBgColorOfInitialLettersAfterSearch(i) {
+    if (changeBgColorDependOnFirstAndSecondLetterIndex(i)) {
+        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-first');
+    }
+    if (changeBgColorDependOnFirstAndSecondLetterSecondIndex(i)) {
+        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-second');
+    }
+    if (changeBgColorDependOnFirstAndSecondLetterThirdIndex(i)) {
+        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-third');
+    }
+}
+
+/**
+* change the color depend on the inital letters
+*/
+function changeBgColorDependOnFirstAndSecondLetterSecondIndex(i) {
+    return allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'H';
+}
+
 
 /**
 * change bg color of low
@@ -94,6 +123,13 @@ function changeColorEditLow() {
     medium.classList.remove('medium-bg-color');
     low.classList.add('low-bg-color');
     changeColorEditLowReverse();
+}
+
+/**
+* change the color depend on the inital letters
+*/
+function changeBgColorDependOnFirstAndSecondLetterThirdIndex(i) {
+    return allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'K';
 }
 
 

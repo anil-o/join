@@ -1278,6 +1278,10 @@
         width: 455px;
     }
 
+    .assignedto-popup-board {
+        width: 455px !important;
+    }
+
     .duedate-popup {
         width: 455px;
     }
@@ -1295,17 +1299,17 @@
     }
 
     .urgent-popup {
-        width: 135px;
+        width: 145px;
         font-size: 16px;
     }
 
     .medium-popup {
-        width: 135px;
+        width: 145px;
         font-size: 16px;
     }
 
     .low-popup {
-        width: 135px;
+        width: 145px;
         font-size: 16px;
     }
 

@@ -2,64 +2,22 @@
 * change the color depend on the inital letters
 */
 function changeBgColorOfInitialLetters() {
-    if (allTasks[j]['firstLetter'] == 'A' && allTasks[j]['secondLetter'] == 'O') {
+    if (changeBgColorDependOnFirstAndSecondLetter()) {
         document.getElementById('assignedForInitialLetters' + j).classList.add('assigned-for-initial-letters-first');
     }
-    if (allTasks[j]['firstLetter'] == 'M' && allTasks[j]['secondLetter'] == 'H') {
+    if (changeBgColorDependOnFirstAndSecondLetterSecond()) {
         document.getElementById('assignedForInitialLetters' + j).classList.add('assigned-for-initial-letters-second');
     }
-    if (allTasks[j]['firstLetter'] == 'M' && allTasks[j]['secondLetter'] == 'K') {
+    if (changeBgColorDependOnFirstAndSecondLetterThird()) {
         document.getElementById('assignedForInitialLetters' + j).classList.add('assigned-for-initial-letters-third');
     }
 }
 
-
 /**
 * change the color depend on the inital letters
 */
-function changeBgColorOfInitialLettersAfterDragAndDrop(i) {
-    if (allTasks[i]['firstLetter'] == 'A' && allTasks[i]['secondLetter'] == 'O') {
-        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-first');
-    }
-    if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'H') {
-        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-second');
-    }
-    if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'K') {
-        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-third');
-    }
-}
-
-
-/**
-* change the color depend on the inital letters
-*/
-function changeBgColorOfInitialLettersDetails(i) {
-    if (allTasks[i]['firstLetter'] == 'A' && allTasks[i]['secondLetter'] == 'O') {
-        document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-first');
-    }
-    if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'H') {
-        document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-second');
-    }
-    if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'K') {
-        document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-third');
-    }
-}
-
-
-
-/**
-* change the color depend on the inital letters 
-*/
-function changeBgColorOfInitialLettersAfterSearch(i) {
-    if (allTasks[i]['firstLetter'] == 'A' && allTasks[i]['secondLetter'] == 'O') {
-        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-first');
-    }
-    if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'H') {
-        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-second');
-    }
-    if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'K') {
-        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-third');
-    }
+function changeBgColorDependOnFirstAndSecondLetter() {
+    return allTasks[j]['firstLetter'] == 'A' && allTasks[j]['secondLetter'] == 'O';
 }
 
 
@@ -87,6 +45,13 @@ function changePrior() {
     }
 }
 
+/**
+* change the color depend on the inital letters
+*/
+function changeBgColorDependOnFirstAndSecondLetterSecond() {
+    return allTasks[j]['firstLetter'] == 'M' && allTasks[j]['secondLetter'] == 'H';
+}
+
 
 /**
 * change color prior in task box
@@ -111,6 +76,22 @@ function changePriorAfterDragAndDrop(i) {
         secondImage.src = "assets/img/board/arrow-low.svg";
     }
 }
+
+/**
+* change the color depend on the inital letters
+*/
+function changeBgColorOfInitialLettersAfterDragAndDrop(i) {
+    if (changeBgColorDependOnFirstAndSecondLetterIndex(i)) {
+        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-first');
+    }
+    if (changeBgColorDependOnFirstAndSecondLetterSecondIndex(i)) {
+        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-second');
+    }
+    if (changeBgColorDependOnFirstAndSecondLetterThirdIndex(i)) {
+        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-third');
+    }
+}
+
 
 
 /**
@@ -137,6 +118,13 @@ function changePriorAfterSearchFilter(i) {
     }
 }
 
+/**
+* change the color depend on the inital letters
+*/
+function changeBgColorDependOnFirstAndSecondLetterThird() {
+    return allTasks[j]['firstLetter'] == 'M' && allTasks[j]['secondLetter'] == 'K';
+}
+
 
 /**
 * change bg color of urgent
@@ -151,6 +139,22 @@ function changeColorUrgent() {
     medium.classList.remove('medium-bg-color');
     low.classList.remove('low-bg-color');
     changeColorUrgentReverse();
+}
+
+
+/**
+* change the color depend on the inital letters
+*/
+function changeBgColorOfInitialLettersDetails(i) {
+    if (changeBgColorDependOnFirstAndSecondLetterIndex(i)) {
+        document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-first');
+    }
+    if (changeBgColorDependOnFirstAndSecondLetterSecondIndex(i)) {
+        document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-second');
+    }
+    if (changeBgColorDependOnFirstAndSecondLetterThirdIndex(i)) {
+        document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-third');
+    }
 }
 
 
