@@ -87,12 +87,12 @@ function changeColorOfCross() {
 }
 
 
- function changeColorOfCrossToStandard() {
+function changeColorOfCrossToStandard() {
     document.getElementById('getCrossForHover').style = 'black;';
- }
+}
 
 
- function cleanFormAddTask() {
+function cleanFormAddTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('descriptionPopup');
     let dudate = document.getElementById('duedate');
@@ -104,12 +104,12 @@ function changeColorOfCross() {
     changeColorAfterCreateTask();
     duedateChangeColorToStandard();
     closeForm();
- }
+}
 
- /**
- * Show active site on the navigation bar -> Add Task
- */
- function addActiveClass2() {
+/**
+* Show active site on the navigation bar -> Add Task
+*/
+function addActiveClass2() {
     setTimeout(function () {
         document.getElementById('addActiveClass-2').classList.add('active');
         document.getElementById('addActiveClassResponsive-2').classList.add('active');
@@ -117,14 +117,26 @@ function changeColorOfCross() {
     }, 150);
 }
 
- /**
- * Hide arrow when selected
+/**
+* Hide arrow when selected
 function hideBlackArrow(id, section) {
-    let currentSection = document.getElementById(section);
-    let currentId = document.getElementById(id);
-    if(currentSection.value != "") {
-        currentId.classList.add('hide-arrow');
-    } else {
-        currentId.classList.remove('hide-arrow');
-    }
+   let currentSection = document.getElementById(section);
+   let currentId = document.getElementById(id);
+   if(currentSection.value != "") {
+       currentId.classList.add('hide-arrow');
+   } else {
+       currentId.classList.remove('hide-arrow');
+   }
 } */
+
+function openAssignedToCheckbox() {
+    let checkboxDiv = document.getElementById('assignedParentDiv');
+    let checkbox = document.getElementById('checkboxWithNamesAssignedTo');
+    if (checkboxDiv.style.height != '180px') {
+        checkbox.classList.remove('d-none');
+        checkboxDiv.style.height = '180px';
+    } else {
+        checkbox.classList.add('d-none');
+        checkboxDiv.style.height = '51px';
+    }
+} 

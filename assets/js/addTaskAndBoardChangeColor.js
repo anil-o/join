@@ -17,7 +17,7 @@ function changeBgColorOfInitialLettersEdit(i) {
 * change the color depend on the inital letters
 */
 function changeBgColorDependOnFirstAndSecondLetterIndex(i) {
-    return allTasks[i]['firstLetter'] == 'A' && allTasks[i]['secondLetter'] == 'O';
+    return allTasks[i]['firstLetterThird'] == 'A' && allTasks[i]['secondLetterThird'] == 'O';
 }
 
 
@@ -88,7 +88,7 @@ function changeBgColorOfInitialLettersAfterSearch(i) {
 * change the color depend on the inital letters
 */
 function changeBgColorDependOnFirstAndSecondLetterSecondIndex(i) {
-    return allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'H';
+    return allTasks[i]['firstLetterFirst'] == 'M' && allTasks[i]['secondLetterFirst'] == 'H';
 }
 
 
@@ -129,7 +129,7 @@ function changeColorEditLow() {
 * change the color depend on the inital letters
 */
 function changeBgColorDependOnFirstAndSecondLetterThirdIndex(i) {
-    return allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'K';
+    return allTasks[i]['firstLetterSecond'] == 'M' && allTasks[i]['secondLetterSecond'] == 'K';
 }
 
 
@@ -217,10 +217,62 @@ function identifySelectedCategory(sel) {
 
 /**
 * identify the selected assigne
-*/
+
 function identifySelectedAssigne(sel) {
-    currentAssigned = sel.options[sel.selectedIndex].text;
-    splitFirstAndSecondNameOfAssignedAsArray = currentAssigned.split(" ");
+    currentAssignedFirst = sel.options[sel.selectedIndex].text;
+    splitFirstAndSecondNameOfAssignedAsArray = currentAssignedFirst.split(" ");
     firstNameLetter = splitFirstAndSecondNameOfAssignedAsArray[0].charAt(0);
     secondNameLetter = splitFirstAndSecondNameOfAssignedAsArray[1].charAt(0);
+}*/
+
+/**
+* identify the assigned
+*/
+function getAssignedFirst() {
+    let assigned = document.getElementById('assignedFirst');
+    if (assigned.checked) {
+        currentAssignedFirst = assigned.value;
+        splitFirstAndSecondNameOfAssignedAsArray = currentAssignedFirst.split(" ");
+        firstNameLetterFirst = splitFirstAndSecondNameOfAssignedAsArray[0].charAt(0);
+        secondNameLetterFirst = splitFirstAndSecondNameOfAssignedAsArray[1].charAt(0);
+    } else {
+        currentAssignedFirst = '';
+        firstNameLetterFirst = '';
+        secondNameLetterFirst = '';
+    }
 }
+
+/**
+* identify the assigned
+*/
+function getAssignedSecond() {
+    let assigned = document.getElementById('assignedSecond');
+    if (assigned.checked) {
+        currentAssignedSecond = assigned.value;
+        splitFirstAndSecondNameOfAssignedAsArray = currentAssignedSecond.split(" ");
+        firstNameLetterSecond = splitFirstAndSecondNameOfAssignedAsArray[0].charAt(0);
+        secondNameLetterSecond = splitFirstAndSecondNameOfAssignedAsArray[1].charAt(0);
+    } else {
+        currentAssignedSecond = '';
+        firstNameLetterSecond = '';
+        secondNameLetterSecond = '';
+    }
+}
+
+/**
+* identify the assigned
+*/
+function getAssignedThird() {
+    let assigned = document.getElementById('assignedThird');
+    if(assigned.checked) {
+        currentAssignedThird = assigned.value;
+        splitFirstAndSecondNameOfAssignedAsArray = currentAssignedThird.split(" ");
+        firstNameLetterThird = splitFirstAndSecondNameOfAssignedAsArray[0].charAt(0);
+        secondNameLetterThird = splitFirstAndSecondNameOfAssignedAsArray[1].charAt(0);
+    } else {
+        currentAssignedThird = '';
+        firstNameLetterThird = '';
+        secondNameLetterThird = '';
+    }
+}
+

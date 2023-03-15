@@ -18,10 +18,10 @@
     <script src="assets/js/addTaskAndBoard.js"></script>
     <script src="assets/js/addTaskAndBoardChangeColor.js"></script>
     <script src="assets/js/addTask.js"></script>
-    <script src="assets/js/login.js"></script>
-    <script src="assets/js/register.js"></script>
     <script src="assets/js/mini_backend.js"></script>
     <script> setURL('https://anil-orhan.developerakademie.net/smallest_backend_ever/');</script>
+    <script src="assets/js/login.js"></script>
+    <script src="assets/js/register.js"></script>
     <title>Board</title>
 </head>
 
@@ -141,7 +141,50 @@
                         <div class="margin-popup"><label class="pop-up-child" for="assignedto-popup">Assigned
                                 to</label><br>
                         </div>
-                        <div class="assignedto-parent-div-board">
+
+                        <div id="assignedParentDivBoard" onclick="openAssignedToCheckboxBoard()" class="assignedto-parent-div-board scrollbar-task-assigned-to-board">
+                            <div>
+                                <div>Select contacts to assign</div>
+                                <div class="img-arrow-select-board-div-assigned"><img
+                                        src="assets/img/addTask/vector_arrow_black.png"></div>
+                            </div>
+                            <div class="d-none" id="checkboxWithNamesAssignedToBoard">
+
+                                <div class="assigned-for-checkbox-board">
+                                    <div class="assignedto-child-div-board invite-contact-board">Invite New Contact</div>
+                                    <div><img class="contact-img-board" src="assets/img/board/contact.png">
+                                    </div>
+                                </div>
+
+                                <label for="name0">
+                                    <div class="assigned-for-checkbox-board">
+                                        <div class="assignedto-child-div-board">Marcus Haas</div>
+                                        <div><input id="name0" type="checkbox" name="Marcus Haas" value="Marcus Haas">
+                                        </div>
+                                    </div>
+                                </label>
+    
+                                <label for="name1">
+                                    <div class="assigned-for-checkbox-board">
+                                        <div class="assignedto-child-div-board">Marius Katzer</div>
+                                        <div><input id="name1" type="checkbox" name="Marius Katzer"
+                                                value="Marius Katzer"></div>
+                                    </div>
+                                </label>
+    
+                                <label for="name2">
+                                    <div class="assigned-for-checkbox-board">
+                                        <div class="assignedto-child-div-board">Anil Orhan</div>
+                                        <div><input id="name2" type="checkbox" name="Anil Orhan" value="Anil Orhan">
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        
+                        
+                        <!--<div class="assignedto-parent-div-board">
                             <div>
                                 <select class="assignedto-popup assignedto-popup-board" id="assignedto-popup"
                                     onChange="identifySelectedAssigne(this);" required>
@@ -153,7 +196,7 @@
                             </div>
                             <div class="img-arrow-select-board-div-assigned"><img src="assets/img/board/vector_arrow_black.png">
                             </div>
-                        </div>
+                        </div>-->
                     </div>
 
                     <div class="seperate-line-popup hide-mobile">

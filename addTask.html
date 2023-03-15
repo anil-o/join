@@ -19,10 +19,10 @@
     <script src="assets/js/addTaskAndBoard.js"></script>
     <script src="assets/js/addTaskAndBoardChangeColor.js"></script>
     <script src="assets/js/addTask.js"></script>
-    <script src="assets/js/login.js"></script>
-    <script src="assets/js/register.js"></script>
     <script src="assets/js/mini_backend.js"></script>
     <script> setURL('https://anil-orhan.developerakademie.net/smallest_backend_ever/');</script>
+    <script src="assets/js/login.js"></script>
+    <script src="assets/js/register.js"></script>
     <title>Add Task</title>
 </head>
 
@@ -63,23 +63,63 @@
                             <option value="IT">IT</option>
                             <option value="Media">Media</option>
                         </select><br>
-                        <div class="img-arrow-select-addTask"><img src="assets/img/addTask/vector_arrow_black.png"></div>
+                        <div class="img-arrow-select-addTask"><img src="assets/img/addTask/vector_arrow_black.png">
+                        </div>
                     </div>
 
                     <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask"
                             for="assignedto-popup">Assigned
                             to</label><br>
                     </div>
-                    <div class="assignedto-parent-div">
-                        <select class="assignedto-popup assignedto-popup-addTask" id="assignedto-popup"
+
+
+                    <div id="assignedParentDiv" onclick="openAssignedToCheckbox()" class="assignedto-parent-div scrollbar-task-assigned-to">
+                        <div>
+                            <div>Select contacts to assign</div>
+                            <div class="img-arrow-select-board-div-assigned"><img
+                                    src="assets/img/addTask/vector_arrow_black.png"></div>
+                        </div>
+                        <div class="d-none" id="checkboxWithNamesAssignedTo">
+                                <div class="assigned-for-checkbox">
+                                    <div class="assignedto-child-div invite-contact-addTask">Invite New Contact</div>
+                                    <div><img class="contact-img-addTask" src="assets/img/addTask/contact.png">
+                                    </div>
+                                </div>
+
+                            <label for="name0">
+                                <div class="assigned-for-checkbox">
+                                    <div class="assignedto-child-div">Marcus Haas</div>
+                                    <div><input id="name0" type="checkbox" name="Marcus Haas" value="Marcus Haas">
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label for="name1">
+                                <div class="assigned-for-checkbox">
+                                    <div class="assignedto-child-div">Marius Katzer</div>
+                                    <div><input id="name1" type="checkbox" name="Marius Katzer"
+                                            value="Marius Katzer"></div>
+                                </div>
+                            </label>
+
+                            <label for="name2">
+                                <div class="assigned-for-checkbox">
+                                    <div class="assignedto-child-div">Anil Orhan</div>
+                                    <div><input id="name2" type="checkbox" name="Anil Orhan" value="Anil Orhan">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        <!--<select class="assignedto-popup assignedto-popup-addTask" id="assignedto-popup"
                             onChange="identifySelectedAssigne(this);" required>
                             <option value="" disabled selected>Select contacts to assign</option>
                             <option value="marcushaas">Marcus Haas</option>
                             <option value="mariuskatzer">Marius Katzer</option>
                             <option value="anilorhan">Anil Orhan</option>
-                        </select>
-                        <div class="img-arrow-select-board-div-assigned"><img src="assets/img/addTask/vector_arrow_black.png"></div>
+                        </select>-->
                     </div>
+
+
                 </div>
 
                 <div class="seperate-line-popup-addTask hide-mediaquery">
@@ -128,9 +168,11 @@
                             name="subtaskPopup" placeholder="Add a new subtask" required></input>
                         <img class="img-plus-subtask" src="assets/img/addTask/plus.png">
                     </div>
-                    <input class="checkbox-subtask" type="checkbox" id="subtaskCheckbox" name="subtaskCheckbox"
-                        value="subtask">
-                    <label for="subtaskCheckbox"> Subtask 1</label><br>
+                    <div class="subtask-checkbox-div">
+                        <div><input class="checkbox-subtask" type="checkbox" id="subtaskCheckbox" name="subtaskCheckbox"
+                            value="subtask"></div>
+                        <div class="checkbox-substask-child"><label for="subtaskCheckbox"> Subtask 1</label><br></div>
+                    </div>
 
                     <div class="btn-popup btn-popup-addTask">
                         <button type="button" onmouseover="changeColorOfCross()"

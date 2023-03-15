@@ -7,17 +7,33 @@ function templateCreateTodo() {
         </div>
         <div class="title">${allTasks[j]['title']}</div>
         <div class="description">${allTasks[j]['description']}</div>
-        <div class="assigned-and-prio">
-            <div id="assignedForInitialLetters${j}" class="assigned">${allTasks[j]['firstLetter']}${allTasks[j]['secondLetter']}</div>
-                <div class="prio">
-                    <div class="first-arrow"><img id="createFirstImg${j}" src=""></div>
-                    <div class="second-arrow"><img id="createSecondImg${j}" src=""></div>
-                </div>
+        <div id="createNamesOfAssigned${j}" class="assigned-and-prio">
+            <div class="assigned-and-prio-child" id="assignedForLettersAssigned${j}">
+
+            </div>
+            <div class="prio">
+                <div class="first-arrow"><img id="createFirstImg${j}" src=""></div>
+                <div class="second-arrow"><img id="createSecondImg${j}" src=""></div>
+            </div>
         </div>
     </div>`;
 }
 
+function templateCreateNamesOfAssigned(i, counter) {
+    return ` 
+    <div id="assignedForInitialLetters${counter}" class="assigned">${allTasks[j]['firstnameLetter'][i]}${allTasks[j]['secondnameLetter'][i]}</div>
+   `;
+}
 
+function templateCreateNamesOfAssignedIfMoreThanThree(amountOfAssignedMembers, counter) {
+    return ` 
+    <div id="assignedForInitialLetters${counter}" class="assigned">${amountOfAssignedMembers}}</div>
+   `;
+}
+
+function templateCreateNamesByDraged(i, index) {
+    return `<div id="assignedForInitialLetters${nameisCheckedJson[i]['counterForDragging'][index]}" class="assigned">${nameisCheckedJson[i]['firstletterChecked'][index]}${nameisCheckedJson[i]['secondletterChecked'][index]}</div>`;
+}
 
 function templateUpdateTodo(i) {
     return `    
@@ -29,11 +45,13 @@ function templateUpdateTodo(i) {
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div id="assignedForInitialLetters${i}" class="assigned">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
-                <div class="prio">
-                    <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
-                    <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
-                </div>
+            <div class="assigned-and-prio-child" id="assignedForLettersAssigned${i}">
+
+            </div>
+            <div class="prio">
+                <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
+                <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
+            </div>
         </div>
     </div>`;
 }
@@ -49,7 +67,9 @@ function templateUpdateInProgress(i) {
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div id="assignedForInitialLetters${i}" class="assigned">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
+            <div class="assigned-and-prio-child" id="assignedForLettersAssigned${i}">
+
+            </div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -69,7 +89,9 @@ function templateUpdateAwaitingFeedback(i) {
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div  id="assignedForInitialLetters${i}" class="assigned">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
+            <div class="assigned-and-prio-child" id="assignedForLettersAssigned${i}">
+
+            </div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -89,7 +111,9 @@ function templateUpdateDone(i) {
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div  id="assignedForInitialLetters${i}" class="assigned">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
+            <div class="assigned-and-prio-child" id="assignedForLettersAssigned${i}">
+
+            </div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -132,8 +156,8 @@ function templateOpenTaskDetails(i) {
         <div class="assigned-open-task">Assigned to:</div>
         <div class="person-and-profile-assigned-open-task-container-hook">
             <div class="person-assigned-open-task-container">
-                <div  id="assignedForInitialLettersDetails${i}" class="profile-assigned-open-task">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
-                <div class="name-assigned-open-task">${allTasks[i]['assigned']}</div>
+                <div  id="assignedForInitialLettersDetails${i}" class="profile-assigned-open-task">${allTasks[i]['firstnameLetter'][i]}${allTasks[i]['secondNameLetter'][i]}</div>
+                <div class="name-assigned-open-task">${allTasks[i]['assigned'][i]}</div>
             </div>
             <div onclick="editShowDetails(${i})" class="edit-open-task">
                 <img class="edit-img-pen-open-task" src="assets/img/board/pen.svg">

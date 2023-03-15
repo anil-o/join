@@ -2,16 +2,23 @@ let allTasks = [];
 let currentTitle;
 let currentDescription;
 let currentCategory;
-let currentAssigned;
+let currentAssigned = ['Marcus Haas', 'Marius Katzer', 'Anil Orhan'];
 let currentDuedate;
+let currentBgColor = [];
 let currentDraggedElement;
 let index = 0;
 let j = 0;
 let currentPrior;
 let currentPriorEdit;
 let splitFirstAndSecondNameOfAssignedAsArray;
-let firstNameLetter;
-let secondNameLetter;
+let firstNameLetter = ['M', 'M', 'A'];
+let secondNameLetter = ['H', 'K', 'O'];
+let nameIsChecked = [];
+let nameIsCheckedFirstletter = [];
+let nameIsCheckedSecondletter = [];
+let counterForDragging = [];
+let positionChecked = [];
+let nameisCheckedJson = [];
 let currentTitleValue;
 let currentDescriptionValue;
 let currentDuedateValue;
@@ -22,8 +29,8 @@ let firstNameLetterEdit;
 let secondNameLetterEdit;
 let splitFirstAndSecondNameOfAssignedAsArrayEdit;
 let alreadyEmpty = true;
-let checkCurrentPrior;
-
+let counter = 0;
+let amountOfAssignedMembers = 4;
 
 /**
 * load task from server
@@ -78,7 +85,8 @@ function createTodo() {
         pushTask();
         let todo = document.getElementById('todo');
         todo.innerHTML += templateCreateTodo();
-        changeBgColorOfInitialLetters();
+        getAssigned();
+        //changeBgColorOfInitialLetters();
         changePrior();
         cleanValues();
         changeColorOfCategory();
@@ -91,6 +99,100 @@ function createTodo() {
     }
 }
 
+/*function createNewContact() {
+        let newContact = document.getElementById('newContact');
+        currentAssigned.push(newContact.value);
+        splitFirstAndSecondNameOfAssignedAsArray = currentAssigned[i].split(" ");
+        firstNameLetter.push(splitFirstAndSecondNameOfAssignedAsArray[0].charAt(0));
+        secondNameLetter.push(splitFirstAndSecondNameOfAssignedAsArrayEdit[1].charAt(0));
+}*/
+
+function getAssigned() {
+    let number = 1;
+    pushNameIsChecked();
+    for (let i = 0; i < currentAssigned.length; i++) {
+        let name = document.getElementById('name' + i);
+        if (name.checked) {
+            if (i <= 2) {
+                let createAssigne = document.getElementById('assignedForLettersAssigned' + j);
+                createAssigne.innerHTML += templateCreateNamesOfAssigned(i, counter);
+                if(number == 1) {
+                    positionChecked.push(0);
+                }
+                if(number == 2) {
+                    document.getElementById('assignedForInitialLetters' + counter).style.left = '31px';
+                    positionChecked.push(31);
+                } else if (number == 3) {
+                    document.getElementById('assignedForInitialLetters' + counter).style.left = '62px';
+                    positionChecked.push(62);
+                }
+                number++
+            } else {
+                let createAssigne = document.getElementById('assignedForLettersAssigned' + j);
+                createAssigne.innerHTML = templateCreateNamesOfAssignedIfMoreThanThree();
+                document.getElementById('assignedForInitialLetters' + counter).style.left = '93px';
+                positionChecked.push(93);
+                amountOfAssignedMembers++;
+            }
+            randomColor(counter);
+            counterForDragging.push(counter);
+            counter++;
+        }
+    }
+    pushInArray();
+    currentBgColor = [];
+    emptyArray();
+}
+
+function pushNameIsChecked() {
+    for (let i = 0; i < currentAssigned.length; i++) {
+        let name = document.getElementById('name' + i);
+        if (name.checked) {
+            nameIsChecked.push(name.value);
+        }
+    }
+    getInitialLettersForDragging();
+}
+
+function getInitialLettersForDragging() {
+    for (let index = 0; index < nameIsChecked.length; index++) {
+        let splitFirstAndSecondNameOfAssignedAsArrayChecked = nameIsChecked[index].split(" ");
+        nameIsCheckedFirstletter.push(splitFirstAndSecondNameOfAssignedAsArrayChecked[0].charAt(0));
+        nameIsCheckedSecondletter.push(splitFirstAndSecondNameOfAssignedAsArrayChecked[1].charAt(0));
+    }
+}
+
+function pushInArray() {
+    let namesForDragging = {
+        'names': nameIsChecked,
+        'firstletterChecked': nameIsCheckedFirstletter,
+        'secondletterChecked': nameIsCheckedSecondletter,
+        'counterForDragging': counterForDragging,
+        'bgColor': currentBgColor,
+        'position': positionChecked,
+    };
+    nameisCheckedJson.push(namesForDragging);
+}
+
+function emptyArray() {
+    nameIsChecked = [];
+    nameIsCheckedFirstletter = [];
+    nameIsCheckedSecondletter = [];
+    counterForDragging = [];
+    positionChecked = [];
+}
+
+function getAssignedByDrag(i) {
+    let createAssigne = document.getElementById('assignedForLettersAssigned' + i);
+    for (let index = 0; index < nameisCheckedJson[i]['names'].length; index++) {
+        createAssigne.innerHTML += templateCreateNamesByDraged(i, index);
+        let color = nameisCheckedJson[i]['bgColor'][index];
+        let positionAssigne = nameisCheckedJson[i]['position'][index];
+        document.getElementById('assignedForInitialLetters' + nameisCheckedJson[i]['counterForDragging'][index]).style.background = `#${color}`;
+        document.getElementById('assignedForInitialLetters' + nameisCheckedJson[i]['counterForDragging'][index]).style.left = `${positionAssigne}px`;
+    }
+}
+
 
 /**
 * reset the inputfield
@@ -100,7 +202,7 @@ function cleanValues() {
     currentDescription.value = ``;
     currentDuedate.value = ``;
     selectedCategoryDefaultValue();
-    selectedAssignedDefaultValue();
+    //selectedAssignedDefaultValue();
     changeColorAfterCreateTask();
     closeForm();
 }
@@ -110,11 +212,13 @@ function cleanForm() {
     let title = document.getElementById('title');
     let description = document.getElementById('descriptionPopup');
     let dudate = document.getElementById('duedate');
+    let subtask = document.getElementById('subtaskPopup');
     title.value = ``;
     description.value = ``;
     dudate.value = ``;
+    subtask.value = ``;
     selectedCategoryDefaultValue();
-    selectedAssignedDefaultValue();
+    //selectedAssignedDefaultValue();
     changeColorAfterCreateTask();
     duedateChangeColorToStandard();
     closeForm();
@@ -145,9 +249,9 @@ function pushTask() {
         'description': currentDescriptionValue,
         'category': currentCategory,
         'assigned': currentAssigned,
+        'firstnameLetter': firstNameLetter,
+        'secondnameLetter': secondNameLetter,
         'duedate': currentDuedateValue,
-        'firstLetter': firstNameLetter,
-        'secondLetter': secondNameLetter,
         'prior': currentPrior,
         'status': 'todo',
         'id': j,
@@ -238,6 +342,7 @@ function updateTodo() {
     for (let i = 0; i < allTasks.length; i++) {
         if (allTasks[i]['status'] == 'todo') {
             todo.innerHTML += templateUpdateTodo(i);
+            getAssignedByDrag(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
             changeBgColorOfInitialLettersAfterDragAndDrop(i);
@@ -256,6 +361,7 @@ function updateInProgress() {
     for (let i = 0; i < allTasks.length; i++) {
         if (allTasks[i]['status'] == 'inProgress') {
             inProgress.innerHTML += templateUpdateInProgress(i);
+            getAssignedByDrag(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
             changeBgColorOfInitialLettersAfterDragAndDrop(i);
@@ -274,6 +380,7 @@ function updateAwaitingFeedback() {
     for (let i = 0; i < allTasks.length; i++) {
         if (allTasks[i]['status'] == 'awaitingFeedback') {
             awaitingFeedback.innerHTML += templateUpdateAwaitingFeedback(i);
+            getAssignedByDrag(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
             changeBgColorOfInitialLettersAfterDragAndDrop(i);
@@ -292,6 +399,7 @@ function updateDone() {
     for (let i = 0; i < allTasks.length; i++) {
         if (allTasks[i]['status'] == 'done') {
             done.innerHTML += templateUpdateDone(i);
+            getAssignedByDrag(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
             changeBgColorOfInitialLettersAfterDragAndDrop(i);
@@ -626,14 +734,26 @@ function addActiveClass1() {
     document.getElementById('addActiveClassResponsive-1').classList.add('active');
 }
 
- /**
- * Hide arrow when selected
- function hideBlackArrowBoard(id, section) {
-    let currentSection = document.getElementById(section);
-    let currentId = document.getElementById(id);
-    if(currentSection.value != "") {
-        currentId.classList.add('hide-arrow');
-    } else {
-        currentId.classList.remove('hide-arrow');
-    }
+/**
+* Hide arrow when selected
+function hideBlackArrowBoard(id, section) {
+   let currentSection = document.getElementById(section);
+   let currentId = document.getElementById(id);
+   if(currentSection.value != "") {
+       currentId.classList.add('hide-arrow');
+   } else {
+       currentId.classList.remove('hide-arrow');
+   }
 } */
+
+function openAssignedToCheckboxBoard() {
+    let checkboxDiv = document.getElementById('assignedParentDivBoard');
+    let checkbox = document.getElementById('checkboxWithNamesAssignedToBoard');
+    if (checkboxDiv.style.height != '180px') {
+        checkbox.classList.remove('d-none');
+        checkboxDiv.style.height = '180px';
+    } else {
+        checkbox.classList.add('d-none');
+        checkboxDiv.style.height = '51px';
+    }
+}

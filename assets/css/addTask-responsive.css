@@ -297,6 +297,18 @@
         width: 400px;
     }
 
+    .category-parent-div {
+        width: 400px;
+    }
+
+    .assignedto-parent-div {
+        width: 400px;
+    }
+
+    .assigned-for-checkbox {
+        width: 379px;
+    }
+
     .category-popup {
         width: 400px;
     }
@@ -572,6 +584,18 @@
     .category-popup-addTask {
         width: 430px !important;
         margin-bottom: 35px !important;
+    }
+
+    .assignedto-parent-div {
+        width: 433px !important;
+    }
+
+    .assigned-for-checkbox {
+        width: 414px !important;
+    }
+
+    .img-arrow-select-addTask {
+        right: 20px;
     }
 
     .assignedto-popup-addTask {

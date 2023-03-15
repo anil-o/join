@@ -1,3 +1,5 @@
+let checkCurrentPrior;
+
 /**
 * change the color depend on the inital letters
 */
@@ -13,13 +15,32 @@ function changeBgColorOfInitialLetters() {
     }
 }
 
+function randomColor(i) {
+    let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    currentBgColor.push(randomColor);
+    document.getElementById('assignedForInitialLetters' + i).style.background = `#${randomColor}`;
+}
+
 /**
 * change the color depend on the inital letters
 */
 function changeBgColorDependOnFirstAndSecondLetter() {
-    return allTasks[j]['firstLetter'] == 'A' && allTasks[j]['secondLetter'] == 'O';
+    return allTasks[j]['firstLetterThird'] == 'A' && allTasks[j]['secondLetterSecondThird'] == 'O';
 }
 
+/**
+* change the color depend on the inital letters
+*/
+function changeBgColorDependOnFirstAndSecondLetterSecond() {
+    return allTasks[j]['firstLetterFirst'] == 'M' && allTasks[j]['secondLetterFirst'] == 'H';
+}
+
+/**
+* change the color depend on the inital letters
+*/
+function changeBgColorDependOnFirstAndSecondLetterThird() {
+    return allTasks[j]['firstLetterSecond'] == 'M' && allTasks[j]['secondLetterSecond'] == 'K';
+}
 
 /**
 * change color prior in task box
@@ -43,13 +64,6 @@ function changePrior() {
         firstImage.src = "assets/img/board/arrow-low.svg";
         secondImage.src = "assets/img/board/arrow-low.svg";
     }
-}
-
-/**
-* change the color depend on the inital letters
-*/
-function changeBgColorDependOnFirstAndSecondLetterSecond() {
-    return allTasks[j]['firstLetter'] == 'M' && allTasks[j]['secondLetter'] == 'H';
 }
 
 
@@ -99,30 +113,24 @@ function changeBgColorOfInitialLettersAfterDragAndDrop(i) {
 */
 function changePriorAfterSearchFilter(i) {
     if (allTasks[i]['prior'] == 'Urgent') {
-        let firstImage = document.getElementById('createFirstImg' + i);
-        let secondImage = document.getElementById('createSecondImg' + i);
-        firstImage.src = "assets/img/board/arrow-urgent.svg";
-        secondImage.src = "assets/img/board/arrow-urgent.svg";
+        changeColorTaskBox('urgent', i);
     }
     if (allTasks[i]['prior'] == 'Medium') {
-        let firstImage = document.getElementById('createFirstImg' + i);
-        let secondImage = document.getElementById('createSecondImg' + i);
-        firstImage.src = "assets/img/board/arrow-medium.svg";
-        secondImage.src = "assets/img/board/arrow-medium.svg";
+        changeColorTaskBox('medium', i);
     }
     if (allTasks[i]['prior'] == 'Low') {
-        let firstImage = document.getElementById('createFirstImg' + i);
-        let secondImage = document.getElementById('createSecondImg' + i);
-        firstImage.src = "assets/img/board/arrow-low.svg";
-        secondImage.src = "assets/img/board/arrow-low.svg";
+        changeColorTaskBox('low', i);
     }
 }
 
 /**
-* change the color depend on the inital letters
+* change color prior in task box
 */
-function changeBgColorDependOnFirstAndSecondLetterThird() {
-    return allTasks[j]['firstLetter'] == 'M' && allTasks[j]['secondLetter'] == 'K';
+function changeColorTaskBox(prior, i) {
+    let firstImage = document.getElementById('createFirstImg' + i);
+    let secondImage = document.getElementById('createSecondImg' + i);
+    firstImage.src = `assets/img/board/arrow-${prior}.svg`;
+    secondImage.src = `assets/img/board/arrow-${prior}.svg`;
 }
 
 
@@ -367,27 +375,48 @@ function changeColorPriorInShowDetails(i) {
 */
 function changePriorShowDetails(i) {
     if (allTasks[i]['prior'] == 'Urgent') {
-        let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
+        changeColorPriorDetailUrgent(i);
+    }
+    if (allTasks[i]['prior'] == 'Medium') {
+        changeColorPriorDetailMedium(i);
+    }
+    if (allTasks[i]['prior'] == 'Low') {
+        changeColorPriorDetailLow(i);
+    }
+}
+
+/**
+ * change the color of prior depend of prior
+*/
+function changeColorPriorDetailUrgent(i) {
+    let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
         let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
         firstImage.src = "assets/img/board/arrow-urgent.svg";
         secondImage.src = "assets/img/board/arrow-urgent.svg";
-    }
-    if (allTasks[i]['prior'] == 'Medium') {
-        let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
-        let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
-        firstImage.style = 'top: -1px;';
-        secondImage.style = 'top: 4px;';
-        firstImage.src = "assets/img/board/arrow-medium.svg";
-        secondImage.src = "assets/img/board/arrow-medium.svg";
-    }
-    if (allTasks[i]['prior'] == 'Low') {
-        let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
+}
+
+/**
+ * change the color of prior depend of prior
+*/
+function changeColorPriorDetailMedium(i) {
+    let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
+    let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
+    firstImage.style = 'top: -1px;';
+    secondImage.style = 'top: 4px;';
+    firstImage.src = "assets/img/board/arrow-medium.svg";
+    secondImage.src = "assets/img/board/arrow-medium.svg";
+}
+
+/**
+ * change the color of prior depend of prior
+*/
+function changeColorPriorDetailLow(i) {
+    let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
         let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
         firstImage.style = 'top: -5px';
         secondImage.style = 'top: 0px';
         firstImage.src = "assets/img/board/arrow-low.svg";
         secondImage.src = "assets/img/board/arrow-low.svg";
-    }
 }
 
 
