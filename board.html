@@ -142,19 +142,13 @@
                                 to</label><br>
                         </div>
 
-                        <div id="assignedParentDivBoard" onclick="openAssignedToCheckboxBoard()" class="assignedto-parent-div-board scrollbar-task-assigned-to-board">
-                            <div>
+                        <div id="assignedParentDivBoard" class="assignedto-parent-div-board scrollbar-task-assigned-to-board">
+                            <div onclick="openAssignedToCheckboxBoard()">
                                 <div>Select contacts to assign</div>
                                 <div class="img-arrow-select-board-div-assigned"><img
                                         src="assets/img/addTask/vector_arrow_black.png"></div>
                             </div>
                             <div class="d-none" id="checkboxWithNamesAssignedToBoard">
-
-                                <div class="assigned-for-checkbox-board">
-                                    <div class="assignedto-child-div-board invite-contact-board">Invite New Contact</div>
-                                    <div><img class="contact-img-board" src="assets/img/board/contact.png">
-                                    </div>
-                                </div>
 
                                 <label for="name0">
                                     <div class="assigned-for-checkbox-board">
@@ -179,24 +173,14 @@
                                         </div>
                                     </div>
                                 </label>
+
+                                <div class="assigned-for-checkbox-board">
+                                    <div class="assignedto-child-div-board invite-contact-board">Invite New Contact</div>
+                                    <div><img class="contact-img-board" src="assets/img/board/contact.png">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        
-                        
-                        <!--<div class="assignedto-parent-div-board">
-                            <div>
-                                <select class="assignedto-popup assignedto-popup-board" id="assignedto-popup"
-                                    onChange="identifySelectedAssigne(this);" required>
-                                    <option value="" disabled selected>Select contacts to assign</option>
-                                    <option value="marcushaas">Marcus Haas</option>
-                                    <option value="mariuskatzer">Marius Katzer</option>
-                                    <option value="anilorhan">Anil Orhan</option>
-                                </select>
-                            </div>
-                            <div class="img-arrow-select-board-div-assigned"><img src="assets/img/board/vector_arrow_black.png">
-                            </div>
-                        </div>-->
                     </div>
 
                     <div class="seperate-line-popup hide-mobile">
@@ -245,9 +229,11 @@
                             <img class="img-plus-subtask" src="assets/img/board/plus.png">
                         </div>
 
-                        <input class="checkbox-subtask" type="checkbox" id="subtaskCheckbox" name="subtaskCheckbox"
+                        <div class="subtask-checkbox-small">
+                            <input class="checkbox-subtask" type="checkbox" id="subtaskCheckbox" name="subtaskCheckbox"
                             value="subtask">
-                        <label for="subtaskCheckbox"> Subtask 1</label><br>
+                            <label class="subtask-margin" for="subtaskCheckbox"> Subtask 1</label><br>
+                        </div>
 
                         <div class="btn-popup">
                             <button type="button" onmouseover="changeCrossToBlue()"

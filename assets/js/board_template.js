@@ -155,9 +155,9 @@ function templateOpenTaskDetails(i) {
     <div class="container-assigned-open-task">
         <div class="assigned-open-task">Assigned to:</div>
         <div class="person-and-profile-assigned-open-task-container-hook">
-            <div class="person-assigned-open-task-container">
-                <div  id="assignedForInitialLettersDetails${i}" class="profile-assigned-open-task">${allTasks[i]['firstnameLetter'][i]}${allTasks[i]['secondNameLetter'][i]}</div>
-                <div class="name-assigned-open-task">${allTasks[i]['assigned'][i]}</div>
+            <div id="openTaskDetailsAssigned${i}" class="person-assigned-open-task-container">
+                
+
             </div>
             <div onclick="editShowDetails(${i})" class="edit-open-task">
                 <img class="edit-img-pen-open-task" src="assets/img/board/pen.svg">
@@ -166,6 +166,14 @@ function templateOpenTaskDetails(i) {
         </div>
     </div>
 </div>`;
+}
+
+function openTaskAssignedTemplate(i, index) {
+    return `
+        <div class="open-task-assigned-group">
+            <div  id="assignedForInitialLettersDetails${nameisCheckedJson[i]['counterForDragging'][index]}" class="profile-assigned-open-task">${nameisCheckedJson[i]['firstletterChecked'][index]}${nameisCheckedJson[i]['secondletterChecked'][index]}</div>
+            <div class="name-assigned-open-task">${nameisCheckedJson[i]['names'][index]}</div>
+        </div>`;
 }
 
 
@@ -235,12 +243,36 @@ function templateEditShowDetails(i) {
         <div class="margin-popup"><label class="pop-up-child pop-up-child-edit" for="assignedto-popup">Assigned
                 to</label><br>
         </div>
-        <select class="assignedto-popup assignedto-popup-edit" id="assignedEdit" onChange="identifySelectedAssigneEdit(this);">
-            <option value="" disabled selected>Select contacts to assign</option>
-            <option value="marcushaas">Marcus Haas</option>
-            <option value="mariuskatzer">Marius Katzer</option>
-            <option value="anilorhan">Anil Orhan</option>
-        </select>
+        <div id="assignedParentDivBoardEdit" class="assignedto-parent-div-board scrollbar-task-assigned-to-board">
+            <div onclick="openAssignedToCheckboxBoardEdit()">
+                <div>Select contacts to assign</div>
+                <div class="img-arrow-select-board-div-assigned"><img
+                src="assets/img/addTask/vector_arrow_black.png"></div>
+            </div>
+            <div class="d-none" id="checkboxWithNamesAssignedToBoardEdit">
+
+                <label for="nameEdit0">
+                        <div class="assigned-for-checkbox-board">
+                                <div class="assignedto-child-div-board">Marcus Haas</div>
+                                <div><input id="nameEdit0" type="checkbox" name="Marcus Haas" value="Marcus Haas"></div>
+                        </div>
+                </label>
+
+                <label for="nameEdit1">
+                        <div class="assigned-for-checkbox-board">
+                            <div class="assignedto-child-div-board">Marius Katzer</div>
+                            <div><input id="nameEdit1" type="checkbox" name="Marius Katzer" value="Marius Katzer"></div>
+                        </div>
+                </label>
+
+                <label for="nameEdit2">
+                    <div class="assigned-for-checkbox-board">
+                        <div class="assignedto-child-div-board">Anil Orhan</div>
+                        <div><input id="nameEdit2" type="checkbox" name="Anil Orhan" value="Anil Orhan"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
         </div>
 
         <div class="hide-status">

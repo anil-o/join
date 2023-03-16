@@ -955,7 +955,6 @@ body {
 }
 
 .person-assigned-open-task-container {
-    display: flex;
     margin-top: 25px;
 }
 
@@ -1254,5 +1253,18 @@ input[type="checkbox"]:checked::before {
 }
 
 .checkbox-substask-child {
+    margin-left: 8px;
+}
+
+.open-task-assigned-group {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.subtask-checkbox-small {
+    display: flex;
+}
+
+.subtask-margin {
     margin-left: 8px;
 }

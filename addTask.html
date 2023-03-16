@@ -73,18 +73,13 @@
                     </div>
 
 
-                    <div id="assignedParentDiv" onclick="openAssignedToCheckbox()" class="assignedto-parent-div scrollbar-task-assigned-to">
-                        <div>
+                    <div id="assignedParentDiv" class="assignedto-parent-div scrollbar-task-assigned-to">
+                        <div onclick="openAssignedToCheckbox()">
                             <div>Select contacts to assign</div>
                             <div class="img-arrow-select-board-div-assigned"><img
                                     src="assets/img/addTask/vector_arrow_black.png"></div>
                         </div>
                         <div class="d-none" id="checkboxWithNamesAssignedTo">
-                                <div class="assigned-for-checkbox">
-                                    <div class="assignedto-child-div invite-contact-addTask">Invite New Contact</div>
-                                    <div><img class="contact-img-addTask" src="assets/img/addTask/contact.png">
-                                    </div>
-                                </div>
 
                             <label for="name0">
                                 <div class="assigned-for-checkbox">
@@ -109,14 +104,13 @@
                                     </div>
                                 </div>
                             </label>
+
+                            <div class="assigned-for-checkbox">
+                                <div class="assignedto-child-div invite-contact-addTask">Invite New Contact</div>
+                                <div><img class="contact-img-addTask" src="assets/img/addTask/contact.png">
+                                </div>
+                            </div>
                         </div>
-                        <!--<select class="assignedto-popup assignedto-popup-addTask" id="assignedto-popup"
-                            onChange="identifySelectedAssigne(this);" required>
-                            <option value="" disabled selected>Select contacts to assign</option>
-                            <option value="marcushaas">Marcus Haas</option>
-                            <option value="mariuskatzer">Marius Katzer</option>
-                            <option value="anilorhan">Anil Orhan</option>
-                        </select>-->
                     </div>
 
 

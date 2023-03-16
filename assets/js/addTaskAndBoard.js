@@ -1,46 +1,14 @@
 let checkCurrentPrior;
 
 /**
-* change the color depend on the inital letters
+* create random color
 */
-function changeBgColorOfInitialLetters() {
-    if (changeBgColorDependOnFirstAndSecondLetter()) {
-        document.getElementById('assignedForInitialLetters' + j).classList.add('assigned-for-initial-letters-first');
-    }
-    if (changeBgColorDependOnFirstAndSecondLetterSecond()) {
-        document.getElementById('assignedForInitialLetters' + j).classList.add('assigned-for-initial-letters-second');
-    }
-    if (changeBgColorDependOnFirstAndSecondLetterThird()) {
-        document.getElementById('assignedForInitialLetters' + j).classList.add('assigned-for-initial-letters-third');
-    }
-}
-
 function randomColor(i) {
     let randomColor = Math.floor(Math.random()*16777215).toString(16);
     currentBgColor.push(randomColor);
     document.getElementById('assignedForInitialLetters' + i).style.background = `#${randomColor}`;
 }
 
-/**
-* change the color depend on the inital letters
-*/
-function changeBgColorDependOnFirstAndSecondLetter() {
-    return allTasks[j]['firstLetterThird'] == 'A' && allTasks[j]['secondLetterSecondThird'] == 'O';
-}
-
-/**
-* change the color depend on the inital letters
-*/
-function changeBgColorDependOnFirstAndSecondLetterSecond() {
-    return allTasks[j]['firstLetterFirst'] == 'M' && allTasks[j]['secondLetterFirst'] == 'H';
-}
-
-/**
-* change the color depend on the inital letters
-*/
-function changeBgColorDependOnFirstAndSecondLetterThird() {
-    return allTasks[j]['firstLetterSecond'] == 'M' && allTasks[j]['secondLetterSecond'] == 'K';
-}
 
 /**
 * change color prior in task box
@@ -91,22 +59,6 @@ function changePriorAfterDragAndDrop(i) {
     }
 }
 
-/**
-* change the color depend on the inital letters
-*/
-function changeBgColorOfInitialLettersAfterDragAndDrop(i) {
-    if (changeBgColorDependOnFirstAndSecondLetterIndex(i)) {
-        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-first');
-    }
-    if (changeBgColorDependOnFirstAndSecondLetterSecondIndex(i)) {
-        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-second');
-    }
-    if (changeBgColorDependOnFirstAndSecondLetterThirdIndex(i)) {
-        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-third');
-    }
-}
-
-
 
 /**
 * change color prior in task box
@@ -151,18 +103,11 @@ function changeColorUrgent() {
 
 
 /**
-* change the color depend on the inital letters
+* create random color for edit
 */
-function changeBgColorOfInitialLettersDetails(i) {
-    if (changeBgColorDependOnFirstAndSecondLetterIndex(i)) {
-        document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-first');
-    }
-    if (changeBgColorDependOnFirstAndSecondLetterSecondIndex(i)) {
-        document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-second');
-    }
-    if (changeBgColorDependOnFirstAndSecondLetterThirdIndex(i)) {
-        document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-third');
-    }
+function randomColorEdit() {
+    let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    currentBgColor.push(randomColor);
 }
 
 

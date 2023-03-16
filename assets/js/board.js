@@ -86,7 +86,6 @@ function createTodo() {
         let todo = document.getElementById('todo');
         todo.innerHTML += templateCreateTodo();
         getAssigned();
-        //changeBgColorOfInitialLetters();
         changePrior();
         cleanValues();
         changeColorOfCategory();
@@ -107,6 +106,10 @@ function createTodo() {
         secondNameLetter.push(splitFirstAndSecondNameOfAssignedAsArrayEdit[1].charAt(0));
 }*/
 
+
+/**
+* get the assgined name for a task
+*/
 function getAssigned() {
     let number = 1;
     pushNameIsChecked();
@@ -116,34 +119,135 @@ function getAssigned() {
             if (i <= 2) {
                 let createAssigne = document.getElementById('assignedForLettersAssigned' + j);
                 createAssigne.innerHTML += templateCreateNamesOfAssigned(i, counter);
-                if(number == 1) {
-                    positionChecked.push(0);
-                }
-                if(number == 2) {
-                    document.getElementById('assignedForInitialLetters' + counter).style.left = '31px';
-                    positionChecked.push(31);
-                } else if (number == 3) {
-                    document.getElementById('assignedForInitialLetters' + counter).style.left = '62px';
-                    positionChecked.push(62);
-                }
+                createAssignedSection(number);
                 number++
             } else {
-                let createAssigne = document.getElementById('assignedForLettersAssigned' + j);
-                createAssigne.innerHTML = templateCreateNamesOfAssignedIfMoreThanThree();
-                document.getElementById('assignedForInitialLetters' + counter).style.left = '93px';
-                positionChecked.push(93);
-                amountOfAssignedMembers++;
+                whenAssigneMoreThanThree();
             }
             randomColor(counter);
-            counterForDragging.push(counter);
-            counter++;
+            counterDrager();
         }
     }
+    pushJsonInArrayAndThanEmptyArray();
+}
+
+
+/**
+* counter for drag and drop
+*/
+function counterDrager() {
+    counterForDragging.push(counter);
+    counter++;
+}
+
+
+/**
+* counter for drag and drop
+*/
+function pushJsonInArrayAndThanEmptyArray() {
     pushInArray();
     currentBgColor = [];
     emptyArray();
 }
 
+
+/**
+* get the assgined name for a task
+*/
+function createAssignedSection(number) {
+    if (number == 1) {
+        positionChecked.push(0);
+    }
+    if (number == 2) {
+        document.getElementById('assignedForInitialLetters' + counter).style.left = '31px';
+        positionChecked.push(31);
+    } else if (number == 3) {
+        document.getElementById('assignedForInitialLetters' + counter).style.left = '62px';
+        positionChecked.push(62);
+    }
+}
+
+
+/**
+* get the assgined name for a task when more than three
+*/
+function whenAssigneMoreThanThree() {
+    let createAssigne = document.getElementById('assignedForLettersAssigned' + j);
+    createAssigne.innerHTML = templateCreateNamesOfAssignedIfMoreThanThree();
+    document.getElementById('assignedForInitialLetters' + counter).style.left = '93px';
+    positionChecked.push(93);
+    amountOfAssignedMembers++;
+}
+
+
+/**
+* save the assgined name for a task
+*/
+function saveEditDetailsAssigned(i) {
+    let number = 1;
+    pushNameIsCheckedAfterEdit();
+    for (let i = 0; i < currentAssigned.length; i++) {
+        let name = document.getElementById('nameEdit' + i);
+        if (name.checked) {
+            if (i <= 2) {
+                makepositionOfAssigne(number);
+                number++
+            } else {
+                whenMoreThanThreeSaveAssigne()
+            }
+            randomColorEdit();
+            counterDraggerSave();
+        }
+    }
+    pushInArrayAfterEdit(i);
+    pushJsonInArrayASave();
+}
+
+
+/**
+* make the position for assigne
+*/
+function counterDraggerSave() {
+    counterForDragging.push(counter);
+    counter++;
+}
+
+
+/**
+* make the position for assigne
+*/
+function pushJsonInArrayASave() {
+    currentBgColor = [];
+    emptyArray();
+}
+
+
+/**
+* make the position for assigne
+*/
+function makepositionOfAssigne(number) {
+    if (number == 1) {
+        positionChecked.push(0);
+    }
+    if (number == 2) {
+        positionChecked.push(31);
+    } else if (number == 3) {
+        positionChecked.push(62);
+    }
+}
+
+/**
+* make the position for assigne
+*/
+function whenMoreThanThreeSaveAssigne(number) {
+    positionChecked.push(93);
+    amountOfAssignedMembers++;
+}
+
+
+/**
+* checked if name is assigned for a task
+*/
 function pushNameIsChecked() {
     for (let i = 0; i < currentAssigned.length; i++) {
         let name = document.getElementById('name' + i);
@@ -154,6 +258,10 @@ function pushNameIsChecked() {
     getInitialLettersForDragging();
 }
 
+
+/**
+* split the assigne name in first and second letter
+*/
 function getInitialLettersForDragging() {
     for (let index = 0; index < nameIsChecked.length; index++) {
         let splitFirstAndSecondNameOfAssignedAsArrayChecked = nameIsChecked[index].split(" ");
@@ -162,6 +270,10 @@ function getInitialLettersForDragging() {
     }
 }
 
+
+/**
+* push in assigne array
+*/
 function pushInArray() {
     let namesForDragging = {
         'names': nameIsChecked,
@@ -174,6 +286,34 @@ function pushInArray() {
     nameisCheckedJson.push(namesForDragging);
 }
 
+/**
+* push in assigne array
+*/
+function pushInArrayAfterEdit(i) {
+    nameisCheckedJson[i]['names'] = nameIsChecked;
+    nameisCheckedJson[i]['firstletterChecked'] = nameIsCheckedFirstletter;
+    nameisCheckedJson[i]['secondletterChecked'] = nameIsCheckedSecondletter;
+    nameisCheckedJson[i]['counterForDragging'] = counterForDragging;
+    nameisCheckedJson[i]['bgColor'] = currentBgColor;
+    nameisCheckedJson[i]['position'] = positionChecked;
+}
+
+/**
+* checked if name is assigned for a task
+*/
+function pushNameIsCheckedAfterEdit() {
+    for (let i = 0; i < currentAssigned.length; i++) {
+        let name = document.getElementById('nameEdit' + i);
+        if (name.checked) {
+            nameIsChecked.push(name.value);
+        }
+    }
+    getInitialLettersForDragging();
+}
+
+/**
+* empty array for assgine
+*/
 function emptyArray() {
     nameIsChecked = [];
     nameIsCheckedFirstletter = [];
@@ -182,6 +322,10 @@ function emptyArray() {
     positionChecked = [];
 }
 
+
+/**
+* change assigned properties right after drag and drop
+*/
 function getAssignedByDrag(i) {
     let createAssigne = document.getElementById('assignedForLettersAssigned' + i);
     for (let index = 0; index < nameisCheckedJson[i]['names'].length; index++) {
@@ -202,12 +346,14 @@ function cleanValues() {
     currentDescription.value = ``;
     currentDuedate.value = ``;
     selectedCategoryDefaultValue();
-    //selectedAssignedDefaultValue();
     changeColorAfterCreateTask();
     closeForm();
 }
 
 
+/**
+* clean inputfields
+*/
 function cleanForm() {
     let title = document.getElementById('title');
     let description = document.getElementById('descriptionPopup');
@@ -218,7 +364,6 @@ function cleanForm() {
     dudate.value = ``;
     subtask.value = ``;
     selectedCategoryDefaultValue();
-    //selectedAssignedDefaultValue();
     changeColorAfterCreateTask();
     duedateChangeColorToStandard();
     closeForm();
@@ -266,6 +411,7 @@ function pushTask() {
 */
 async function addInBackend() {
     await backend.setItem('allTasks', JSON.stringify(allTasks));
+    await backend.setItem('nameisCheckedJson', JSON.stringify(nameisCheckedJson));
 }
 
 
@@ -274,8 +420,10 @@ async function addInBackend() {
 */
 async function getTasksFromBackend() {
     let allTasksAsJson = await backend.getItem('allTasks');
+    let nameisCheckedJsonAsJson = await backend.getItem('nameisCheckedJson');
     if (allTasksAsJson != null) {
         allTasks = JSON.parse(allTasksAsJson);
+        nameisCheckedJson = JSON.parse(nameisCheckedJsonAsJson);
         updateBoard();
     }
 }
@@ -287,6 +435,7 @@ async function getTasksFromBackend() {
 async function deleteTask(i, event) {
     event.stopPropagation();
     allTasks.splice(i, 1);
+    nameisCheckedJson.splice(i, 1);
     if (allTasks.length < 1) {
         await deleteAllTasksArray();
         updateBoard();
@@ -302,6 +451,7 @@ async function deleteTask(i, event) {
 */
 async function deleteAllTasksArray() {
     await backend.deleteItem('allTasks');
+    await backend.deleteItem('nameisCheckedJson');
 }
 
 
@@ -310,14 +460,6 @@ async function deleteAllTasksArray() {
 */
 function selectedCategoryDefaultValue() {
     document.getElementById("category-popup").selectedIndex = "0";
-}
-
-
-/**
-* set the default value of assign after submit form
-*/
-function selectedAssignedDefaultValue() {
-    document.getElementById("assignedto-popup").selectedIndex = "0";
 }
 
 
@@ -345,7 +487,6 @@ function updateTodo() {
             getAssignedByDrag(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
-            changeBgColorOfInitialLettersAfterDragAndDrop(i);
             addInBackend();
         }
     }
@@ -364,7 +505,6 @@ function updateInProgress() {
             getAssignedByDrag(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
-            changeBgColorOfInitialLettersAfterDragAndDrop(i);
             addInBackend();
         }
     }
@@ -383,7 +523,6 @@ function updateAwaitingFeedback() {
             getAssignedByDrag(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
-            changeBgColorOfInitialLettersAfterDragAndDrop(i);
             addInBackend();
         }
     }
@@ -402,7 +541,6 @@ function updateDone() {
             getAssignedByDrag(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
-            changeBgColorOfInitialLettersAfterDragAndDrop(i);
             addInBackend();
         }
     }
@@ -456,7 +594,6 @@ function changeStatus(i) {
 function deleteIconInSearchInputField() {
     let line = document.getElementById('line');
     let iconSearch = document.getElementById('iconSearch');
-
     line.classList.add('d-none');
     iconSearch.classList.add('d-none');
 }
@@ -471,7 +608,6 @@ function loadIconAndLine() {
     if (searchTask == ``) {
         let line = document.getElementById('line');
         let iconSearch = document.getElementById('iconSearch');
-
         line.classList.remove('d-none');
         iconSearch.classList.remove('d-none');
     }
@@ -519,10 +655,23 @@ function openTaskDetails(i, event) {
     document.getElementById('openTask').classList.add('open-position');
     let openTask = document.getElementById('openTask');
     openTask.innerHTML = templateOpenTaskDetails(i);
+    openTaskAssigned(i);
     changeColorPriorInShowDetails(i);
     changePriorShowDetails(i);
     changeCategoryShowDetails(i);
-    changeBgColorOfInitialLettersDetails(i);
+}
+
+
+/**
+ * show assigne after open task
+*/
+function openTaskAssigned(i) {
+    let assigned = document.getElementById('openTaskDetailsAssigned' + i);
+    for (let index = 0; index < nameisCheckedJson[i]['names'].length; index++) {
+        assigned.innerHTML += openTaskAssignedTemplate(i, index);
+        let color = nameisCheckedJson[i]['bgColor'][index];
+        document.getElementById('assignedForInitialLettersDetails' + nameisCheckedJson[i]['counterForDragging'][index]).style.background = `#${color}`;
+    }
 }
 
 
@@ -548,7 +697,7 @@ function editShowDetails(i) {
     profile.innerHTML = `${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}`;
     let subtasksEdit = document.getElementById('subtaskEdit');
     subtasksEdit.value = allTasks[i]['subtask'];
-    changeBgColorOfInitialLettersEdit(i);
+    //changeBgColorOfInitialLettersEdit(i);
     changePriorColorByEdit(i);
 }
 
@@ -574,15 +723,10 @@ function saveEditDetails(i) {
     allTasks[i]['duedate'] = duedateEdit.value;
     let subtasksEdit = document.getElementById('subtaskEdit');
     allTasks[i]['subtask'] = subtasksEdit.value;
-    if (assignedEdit != undefined) {
-        allTasks[i]['firstLetter'] = firstNameLetterEdit;
-        allTasks[i]['secondLetter'] = secondNameLetterEdit;
-        allTasks[i]['assigned'] = assignedEdit;
-    }
+    saveEditDetailsAssigned(i);
     if (currentPriorEdit != undefined) {
         allTasks[i]['prior'] = currentPriorEdit;
     }
-    changeBgColorOfInitialLettersDetails(i);
     addInBackend();
     updateBoard();
 }
@@ -734,26 +878,31 @@ function addActiveClass1() {
     document.getElementById('addActiveClassResponsive-1').classList.add('active');
 }
 
-/**
-* Hide arrow when selected
-function hideBlackArrowBoard(id, section) {
-   let currentSection = document.getElementById(section);
-   let currentId = document.getElementById(id);
-   if(currentSection.value != "") {
-       currentId.classList.add('hide-arrow');
-   } else {
-       currentId.classList.remove('hide-arrow');
-   }
-} */
 
 function openAssignedToCheckboxBoard() {
     let checkboxDiv = document.getElementById('assignedParentDivBoard');
     let checkbox = document.getElementById('checkboxWithNamesAssignedToBoard');
-    if (checkboxDiv.style.height != '180px') {
+    if (checkboxDiv.style.height != '150px') {
         checkbox.classList.remove('d-none');
-        checkboxDiv.style.height = '180px';
-    } else {
+        checkbox.style.height = '150px';
+        checkboxDiv.style.height = '150px';
+    } else if (checkboxDiv.style.height == '150px') {
         checkbox.classList.add('d-none');
         checkboxDiv.style.height = '51px';
+        checkbox.style.height = '51px';
+    }
+}
+
+function openAssignedToCheckboxBoardEdit() {
+    let checkboxDiv = document.getElementById('assignedParentDivBoardEdit');
+    let checkbox = document.getElementById('checkboxWithNamesAssignedToBoardEdit');
+    if (checkboxDiv.style.height != '140px') {
+        checkbox.classList.remove('d-none');
+        checkbox.style.height = '140px';
+        checkboxDiv.style.height = '140px';
+    } else if (checkboxDiv.style.height == '140px') {
+        checkbox.classList.add('d-none');
+        checkboxDiv.style.height = '51px';
+        checkbox.style.height = '51px';
     }
 }

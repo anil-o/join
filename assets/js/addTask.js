@@ -34,8 +34,10 @@ function loadTheParameterJ() {
 */
 async function getTaskFromBackendAddTask() {
     let allTasksAsJson = await backend.getItem('allTasks');
+    let nameisCheckedJsonAsJson = await backend.getItem('nameisCheckedJson');
     if (allTasksAsJson != null) {
         allTasks = JSON.parse(allTasksAsJson);
+        nameisCheckedJson = JSON.parse(nameisCheckedJsonAsJson);
     }
 }
 
@@ -118,25 +120,18 @@ function addActiveClass2() {
 }
 
 /**
-* Hide arrow when selected
-function hideBlackArrow(id, section) {
-   let currentSection = document.getElementById(section);
-   let currentId = document.getElementById(id);
-   if(currentSection.value != "") {
-       currentId.classList.add('hide-arrow');
-   } else {
-       currentId.classList.remove('hide-arrow');
-   }
-} */
-
+* Open the checkbox for assigne
+*/
 function openAssignedToCheckbox() {
     let checkboxDiv = document.getElementById('assignedParentDiv');
     let checkbox = document.getElementById('checkboxWithNamesAssignedTo');
-    if (checkboxDiv.style.height != '180px') {
+    if (checkboxDiv.style.height != '150px') {
         checkbox.classList.remove('d-none');
-        checkboxDiv.style.height = '180px';
-    } else {
+        checkbox.style.height = '150px';
+        checkboxDiv.style.height = '150px';
+    }  else if (checkboxDiv.style.height == '150px') {
         checkbox.classList.add('d-none');
         checkboxDiv.style.height = '51px';
+        checkbox.style.height = '51px';
     }
 } 
