@@ -625,6 +625,15 @@ function openForm(event) {
 }
 
 
+function closeDropDown() {
+    let checkboxDiv = document.getElementById('assignedParentDivBoard');
+    let checkbox = document.getElementById('checkboxWithNamesAssignedToBoard');
+    checkbox.classList.add('d-none');
+    checkboxDiv.style.height = '51px';
+    checkbox.style.height = '51px';
+}
+
+
 /**
 * close the pop-up
 */
@@ -676,6 +685,24 @@ function openTaskAssigned(i) {
 
 
 /**
+ * show assigne checkbox in edit 
+*/
+function openAssignedToCheckboxBoardEdit() {
+    let checkboxDiv = document.getElementById('assignedParentDivBoardEdit');
+    let checkbox = document.getElementById('checkboxWithNamesAssignedToBoardEdit');
+    if (checkboxDiv.style.height != '140px') {
+        checkbox.classList.remove('d-none');
+        checkbox.style.height = '140px';
+        checkboxDiv.style.height = '140px';
+    } else if (checkboxDiv.style.height == '140px') {
+        checkbox.classList.add('d-none');
+        checkboxDiv.style.height = '51px';
+        checkbox.style.height = '51px';
+    }
+}
+
+
+/**
  * show edit details 
 */
 function editShowDetails(i) {
@@ -697,7 +724,6 @@ function editShowDetails(i) {
     profile.innerHTML = `${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}`;
     let subtasksEdit = document.getElementById('subtaskEdit');
     subtasksEdit.value = allTasks[i]['subtask'];
-    //changeBgColorOfInitialLettersEdit(i);
     changePriorColorByEdit(i);
 }
 
@@ -879,6 +905,9 @@ function addActiveClass1() {
 }
 
 
+/**
+ * Show checkbox for assign
+ */
 function openAssignedToCheckboxBoard() {
     let checkboxDiv = document.getElementById('assignedParentDivBoard');
     let checkbox = document.getElementById('checkboxWithNamesAssignedToBoard');
@@ -893,16 +922,3 @@ function openAssignedToCheckboxBoard() {
     }
 }
 
-function openAssignedToCheckboxBoardEdit() {
-    let checkboxDiv = document.getElementById('assignedParentDivBoardEdit');
-    let checkbox = document.getElementById('checkboxWithNamesAssignedToBoardEdit');
-    if (checkboxDiv.style.height != '140px') {
-        checkbox.classList.remove('d-none');
-        checkbox.style.height = '140px';
-        checkboxDiv.style.height = '140px';
-    } else if (checkboxDiv.style.height == '140px') {
-        checkbox.classList.add('d-none');
-        checkboxDiv.style.height = '51px';
-        checkbox.style.height = '51px';
-    }
-}

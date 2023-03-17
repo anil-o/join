@@ -28,6 +28,17 @@ function loadTheParameterJ() {
 }
 
 
+/**
+ * close drop down 
+ */
+function closeDropDown() {
+    let checkboxDiv = document.getElementById('assignedParentDiv');
+    let checkbox = document.getElementById('checkboxWithNamesAssignedTo');
+    checkbox.classList.add('d-none');
+    checkboxDiv.style.height = '51px';
+    checkbox.style.height = '51px';
+}
+
 
 /*
  * get the task in backend
