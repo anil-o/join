@@ -1,10 +1,14 @@
+async function initAddTask() {
+    await downloadFromServer();
+    await getTaskFromBackendAddTask();
+    loadCounter();
+}
+
 /*
  * create task for board
 */
 async function createTodoForBoard() {
     if (checkCurrentPrior == 'Urgent' || checkCurrentPrior == 'Medium' || checkCurrentPrior == 'Low') {
-        await downloadFromServer();
-        await getTaskFromBackendAddTask();
         loadTheParameterJ();
         createTodoAddTask();
         let addTask = document.getElementById('addedTask');
@@ -33,7 +37,7 @@ function loadTheParameterJ() {
  */
 function loadCounter() {
     let nameisCheckedJsonLength = nameisCheckedJson.length - 1;
-    if (counter > 0 || nameisCheckedJsonLength >= 0) { 
+    if (counter > 0 || nameisCheckedJsonLength >= 0) {
         let counterForTask = nameisCheckedJson[nameisCheckedJsonLength]['counterForDragging'];
         let counterLength = counterForTask.length - 1;
         counter = counterForTask[counterLength];
@@ -100,19 +104,25 @@ function createTodoAddTask() {
 function getAssignedAddTask() {
     let number = 1;
     pushNameIsChecked();
-    for (let i = 0; i < currentAssigned.length; i++) {
+    for (let i = 0; i < nameIsChecked.length; i++) {
         let name = document.getElementById('name' + i);
         if (name.checked) {
-            createAssignedSectionAddTask();
+            createAssignedSectionAddTask(number);
             number++;
         } else {
             positionChecked.push(93);
             amountOfAssignedMembers++;
         }
-        randomColor(counter);
+        randomColorAddTask();
         counterDrager();
     }
     pushJsonInArrayAndThanEmptyArray();
+}
+
+
+function randomColorAddTask() {
+    let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    currentBgColor.push(randomColor);
 }
 
 /**
@@ -137,7 +147,6 @@ function clearTodo() {
     currentDescription.value = ``;
     currentDuedate.value = ``;
     selectedCategoryDefaultValue();
-    selectedAssignedDefaultValue();
     changeColorAfterCreateTask();
     duedateChangeColorToStandard();
 }
@@ -160,11 +169,13 @@ function cleanFormAddTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('descriptionPopup');
     let dudate = document.getElementById('duedate');
+    let subtask = document.getElementById('subtaskPopup');
     title.value = ``;
     description.value = ``;
     dudate.value = ``;
+    subtask.value = ``;
+    cleanCheckboxAssgine();
     selectedCategoryDefaultValue();
-    selectedAssignedDefaultValue();
     changeColorAfterCreateTask();
     duedateChangeColorToStandard();
     closeForm();

@@ -364,6 +364,7 @@ function cleanValues() {
     currentTitle.value = ``;
     currentDescription.value = ``;
     currentDuedate.value = ``;
+    currentSubtask.value = ``;
     cleanCheckboxAssgine();
     selectedCategoryDefaultValue();
     changeColorAfterCreateTask();
@@ -759,8 +760,6 @@ function editShowDetails(i) {
     descriptionEdit.value = allTasks[i]['description'];
     let duedateEdit = document.getElementById('duedateEdit');
     duedateEdit.value = allTasks[i]['duedate'];
-    let profile = document.getElementById('profileAssignedEdit' + i);
-    profile.innerHTML = `${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}`;
     let subtasksEdit = document.getElementById('subtaskEdit');
     subtasksEdit.value = allTasks[i]['subtask'];
     changePriorColorByEdit(i);
