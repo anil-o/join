@@ -625,6 +625,9 @@ function openForm(event) {
 }
 
 
+/**
+* close drop down assigne
+*/
 function closeDropDown() {
     let checkboxDiv = document.getElementById('assignedParentDivBoard');
     let checkbox = document.getElementById('checkboxWithNamesAssignedToBoard');

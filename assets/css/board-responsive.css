@@ -1255,6 +1255,7 @@
 
     /* add task*/
     .add-task-pop-up {
+        top: 4px;
         left: 0;
         border-radius: 0;
         background-color: #F5F5F5;
