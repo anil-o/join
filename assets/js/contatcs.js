@@ -276,6 +276,11 @@ function renderContactBookResponsive() {
 }
 
 
+function genereateRandomColor() {
+    let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    document.getElementById('contactCircleBgColor' + i).style.background = `#${randomColor} !important`;
+}
+
 /**
 * render and generate HTML Code for the businesscard in responsive mode
 */

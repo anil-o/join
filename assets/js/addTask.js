@@ -6,7 +6,6 @@ async function createTodoForBoard() {
         await downloadFromServer();
         await getTaskFromBackendAddTask();
         loadTheParameterJ();
-        loadCounter();
         createTodoAddTask();
         let addTask = document.getElementById('addedTask');
         addTask.style = "display: flex;";
@@ -34,10 +33,12 @@ function loadTheParameterJ() {
  */
 function loadCounter() {
     let nameisCheckedJsonLength = nameisCheckedJson.length - 1;
-    let counterForTask = nameisCheckedJson[nameisCheckedJsonLength]['counterForDragging'];
-    let counterLength = counterForTask.length;
-    counter = counterForTask[counterLength];
-    counter++;
+    if (counter > 0 || nameisCheckedJsonLength >= 0) { 
+        let counterForTask = nameisCheckedJson[nameisCheckedJsonLength]['counterForDragging'];
+        let counterLength = counterForTask.length - 1;
+        counter = counterForTask[counterLength];
+        counter++;
+    }
 }
 
 

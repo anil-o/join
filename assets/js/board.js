@@ -72,10 +72,12 @@ function identifyId() {
  */
 function getCounter() {
     let nameisCheckedJsonLength = nameisCheckedJson.length - 1;
-    let counterForTask = nameisCheckedJson[nameisCheckedJsonLength]['counterForDragging'];
-    let counterLength = counterForTask.length - 1;
-    counter = counterForTask[counterLength];
-    counter++;
+    if (counter > 0 || nameisCheckedJsonLength >= 0) { 
+        let counterForTask = nameisCheckedJson[nameisCheckedJsonLength]['counterForDragging'];
+        let counterLength = counterForTask.length - 1;
+        counter = counterForTask[counterLength];
+        counter++;
+    }
 }
 
 
