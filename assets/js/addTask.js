@@ -6,6 +6,7 @@ async function createTodoForBoard() {
         await downloadFromServer();
         await getTaskFromBackendAddTask();
         loadTheParameterJ();
+        loadCounter();
         createTodoAddTask();
         let addTask = document.getElementById('addedTask');
         addTask.style = "display: flex;";
@@ -29,9 +30,21 @@ function loadTheParameterJ() {
 
 
 /**
+ * load counter
+ */
+function loadCounter() {
+    let nameisCheckedJsonLength = nameisCheckedJson.length - 1;
+    let counterForTask = nameisCheckedJson[nameisCheckedJsonLength]['counterForDragging'];
+    let counterLength = counterForTask.length;
+    counter = counterForTask[counterLength];
+    counter++;
+}
+
+
+/**
  * close drop down 
  */
-function closeDropDown() {
+function closeDropDownAddTask() {
     let checkboxDiv = document.getElementById('assignedParentDiv');
     let checkbox = document.getElementById('checkboxWithNamesAssignedTo');
     checkbox.classList.add('d-none');
@@ -73,10 +86,47 @@ function createTodoAddTask() {
     currentDescriptionValue = currentDescription.value;
     currentDuedate = document.getElementById('duedate');
     currentDuedateValue = currentDuedate.value;
+    currentSubtask = document.getElementById('subtaskPopup');
+    currentSubtaskValue = currentSubtask.value;
+    getAssignedAddTask();
     pushTask();
     addInBackend();
 }
 
+
+
+
+function getAssignedAddTask() {
+    let number = 1;
+    pushNameIsChecked();
+    for (let i = 0; i < currentAssigned.length; i++) {
+        let name = document.getElementById('name' + i);
+        if (name.checked) {
+            createAssignedSectionAddTask();
+            number++;
+        } else {
+            positionChecked.push(93);
+            amountOfAssignedMembers++;
+        }
+        randomColor(counter);
+        counterDrager();
+    }
+    pushJsonInArrayAndThanEmptyArray();
+}
+
+/**
+* get the assgined name for a task
+*/
+function createAssignedSectionAddTask(number) {
+    if (number == 1) {
+        positionChecked.push(0);
+    }
+    if (number == 2) {
+        positionChecked.push(31);
+    } else if (number == 3) {
+        positionChecked.push(62);
+    }
+}
 
 /*
  * clear the form
@@ -140,7 +190,7 @@ function openAssignedToCheckbox() {
         checkbox.classList.remove('d-none');
         checkbox.style.height = '150px';
         checkboxDiv.style.height = '150px';
-    }  else if (checkboxDiv.style.height == '150px') {
+    } else if (checkboxDiv.style.height == '150px') {
         checkbox.classList.add('d-none');
         checkboxDiv.style.height = '51px';
         checkbox.style.height = '51px';

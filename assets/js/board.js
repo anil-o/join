@@ -39,6 +39,7 @@ async function initialize() {
     await downloadFromServer();
     await getTasksFromBackend();
     identifyId();
+    getCounter();
     addActiveClass1();
 }
 
@@ -63,6 +64,18 @@ function identifyId() {
         j = allTasks[length]['id'];
         j++;
     }
+}
+
+
+/**
+ * get counter
+ */
+function getCounter() {
+    let nameisCheckedJsonLength = nameisCheckedJson.length - 1;
+    let counterForTask = nameisCheckedJson[nameisCheckedJsonLength]['counterForDragging'];
+    let counterLength = counterForTask.length - 1;
+    counter = counterForTask[counterLength];
+    counter++;
 }
 
 
@@ -184,6 +197,7 @@ function whenAssigneMoreThanThree() {
 * save the assgined name for a task
 */
 function saveEditDetailsAssigned(i) {
+    let checkedNewAssign = false;
     let number = 1;
     pushNameIsCheckedAfterEdit();
     for (let i = 0; i < currentAssigned.length; i++) {
@@ -197,10 +211,13 @@ function saveEditDetailsAssigned(i) {
             }
             randomColorEdit();
             counterDraggerSave();
+            checkedNewAssign = true;
         }
     }
-    pushInArrayAfterEdit(i);
-    pushJsonInArrayASave();
+    if (checkedNewAssign) {
+        pushInArrayAfterEdit(i);
+        pushJsonInArrayASave();
+    } 
 }
 
 
@@ -345,9 +362,23 @@ function cleanValues() {
     currentTitle.value = ``;
     currentDescription.value = ``;
     currentDuedate.value = ``;
+    cleanCheckboxAssgine();
     selectedCategoryDefaultValue();
     changeColorAfterCreateTask();
     closeForm();
+}
+
+
+/**
+* clean checkbox assigne
+*/
+function cleanCheckboxAssgine() {
+    for (let i = 0; i < currentAssigned.length; i++) {
+        let checkbox = document.getElementById('name' + i);
+        if (checkbox.checked == true) {
+            checkbox.checked = false;
+        }
+    }
 }
 
 
@@ -363,6 +394,7 @@ function cleanForm() {
     description.value = ``;
     dudate.value = ``;
     subtask.value = ``;
+    cleanCheckboxAssgine();
     selectedCategoryDefaultValue();
     changeColorAfterCreateTask();
     duedateChangeColorToStandard();
@@ -650,6 +682,8 @@ function closeForm() {
     document.getElementById('mainContainer').classList.remove('hide-mobile');
     duedateChangeColorToStandard();
 }
+
+
 
 
 /**

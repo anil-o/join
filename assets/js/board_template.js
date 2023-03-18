@@ -290,8 +290,7 @@ function templateEditShowDetails(i) {
 
         <div>
         <div class="person-and-profile-assigned-open-task-container">
-            <div class=".person-assigned-open-task-container-edit">
-                <div id="profileAssignedEdit${i}" class="profile-assigned-open-task-edit"></div>
+            <div class="person-assigned-open-task-container-edit">
             </div>
             <div onclick="openTaskDetailsAfter(${i}, event);" class="edit-open-task-okay-and-hook">
                 <div class="edit-open-task-okay">Ok</div>
