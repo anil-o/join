@@ -1346,7 +1346,7 @@
     .open-position {
         left: 310px;
         top: 0;
-        min-height: 500px;
+        min-height: 660px;
     }
 
     .category-open-task {
@@ -1382,7 +1382,7 @@
     .open-position-for-edit {
         left: 310px;
         top: 0;
-        min-height: 500px;
+        min-height: 660px;
     }
 
     .pop-up-child {

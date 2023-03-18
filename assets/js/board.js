@@ -930,8 +930,8 @@ function clearBoardBeforeFilter() {
  * execution function in search task
 */
 function executeFunction(i) {
-    changeBgColorOfInitialLettersAfterSearch(i);
     changePriorAfterSearchFilter(i);
+    getAssignedByDrag(i);
 }
 
 /**
