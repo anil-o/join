@@ -139,6 +139,7 @@ function templateOpenTaskDetails(i) {
         <div class="subtask-title-open-task">Subtask:</div>
             <div class="subtask-container-open-task">
                 <div class="subtask-value-open-task">${allTasks[i]['subtask']}</div>
+                <div><input onclick="checkSubtaskIsCheckedOrNot()" type="checkbox" id="subtaskCheckbox${i}" name="subtaskCheckbox${i}" value="subtaskCheckbox${i}"></div>
             </div>
     </div>
 

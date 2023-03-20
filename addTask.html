@@ -37,19 +37,19 @@
         <form onsubmit="createTodoForBoard(); return false;" class="container-inputfield-addTask">
             <div class="container-for-seperate-left-and-right-content-addTask">
                 <div>
-                    <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask"
+                    <div class="margin-popup"><label class="pop-up-child popup-child-for-left-side pop-up-child-addedTask"
                             for="title">Title</label><br></div>
                     <input onclick="closeDropDownAddTask()" class="title-popup title-popup-addTask" type="text" id="title" name="title"
                         placeholder="Enter a title" required>
 
-                    <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask"
+                    <div class="margin-popup"><label class="pop-up-child popup-child-for-left-side pop-up-child-addedTask"
                             for="descriptionPopup">Description</label><br>
                     </div>
                     <textarea onclick="closeDropDownAddTask()" class="description-popup description-popup-addTask" type="text" id="descriptionPopup"
                         name="descriptionPopup" rows="3" cols="20" placeholder="Enter a Description"
                         required></textarea>
 
-                    <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask"
+                    <div class="margin-popup"><label class="pop-up-child popup-child-for-left-side pop-up-child-addedTask"
                             for="category-popup">Category</label><br>
                     </div>
                     <div class="category-parent-div">
@@ -67,13 +67,13 @@
                         </div>
                     </div>
 
-                    <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask"
+                    <div class="margin-popup"><label class="pop-up-child popup-child-for-left-side pop-up-child-addedTask"
                             for="assignedto-popup">Assigned
                             to</label><br>
                     </div>
 
 
-                    <div id="assignedParentDiv" class="assignedto-parent-div scrollbar-task-assigned-to">
+                    <div id="assignedParentDiv" class="assignedto-parent-div assignedto-popup-addTask scrollbar-task-assigned-to">
                         <div onclick="openAssignedToCheckbox()">
                             <div>Select contacts to assign</div>
                             <div class="img-arrow-select-board-div-assigned"><img
@@ -159,7 +159,7 @@
                     </div>
                     <div class="parent-subtask-div">
                         <input onclick="closeDropDownAddTask()" class="subtask-popup subtask-popup-addTask" type="text" id="subtaskPopup"
-                            name="subtaskPopup" placeholder="Add a new subtask" required></input>
+                            name="subtaskPopup" placeholder="Add a new subtask"></input>
                         <img class="img-plus-subtask" src="assets/img/addTask/plus.png">
                     </div>
                     <div class="subtask-checkbox-div">

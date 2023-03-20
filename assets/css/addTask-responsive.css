@@ -164,7 +164,6 @@
     }
 
     .title-popup-addTask {
-        margin-left: 10px !important;
         margin-bottom: 25px !important;
         width: 270px !important;
     }
@@ -181,20 +180,17 @@
     }
 
     .description-popup-addTask {
-        margin-left: 10px !important;
         margin-bottom: 25px !important;
         width: 270px !important;
     }
 
     .category-popup-addTask {
-        margin-left: 10px !important;
         margin-bottom: 25px !important;
         width: 270px !important;
         font-size: 19px;
     }
 
     .assignedto-popup-addTask {
-        margin-left: 10px !important;
         margin-bottom: 25px !important;
         width: 270px !important;
         font-size: 19px;
@@ -210,6 +206,10 @@
         margin-left: 10px !important;
         margin-bottom: 25px !important;
         width: 270px !important;
+    }
+
+    .popup-child-for-left-side {
+        margin-left: 6px !important;
     }
 }
 

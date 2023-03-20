@@ -9,7 +9,7 @@ function showLogout() {
                 <div class="rs-logout" onclick="openHelp()" id="addActiveClassResponsive-6">Help</div>
                 <div class="rs-logout" onclick="openLegalNotice()" id="addActiveClassResponsive-4">Legal notice</div>
                 <div class="rs-logout" onclick="openPrivacy()" id="addActiveClassResponsive-5">Privacy</div>
-                <div class="logout-inner-btn" onclick="Logout()">Log out</div>
+                <div class="logout-inner-btn" onclick="logout()">Log out</div>
             </div>
         </div>
     </div>
@@ -39,10 +39,11 @@ function doNotClose(event) {
 /**
 * clear active user status and send back to index.html - log in
 */
-async function Logout() {
-    await backend.setItem('activeUser', JSON.stringify(activeUser.length = 0));
+async function logout() {
+    //await backend.setItem('activeUser', JSON.stringify(activeUser.length = 0));
+    let activeUserJson = JSON.stringify(activeUser);
+    localStorage.setItem('activeUser', activeUserJson);
     window.open("index.html", "_self");
-
 }
 
 

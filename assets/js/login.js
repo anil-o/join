@@ -34,7 +34,9 @@ async function login() { // Log in when signed up
         activeUser.push(foundUser.name);
         activeUser.push(foundUser.email);
         activeUser.push(foundUser.password);
-        await backend.setItem('activeUser', JSON.stringify(activeUser));
+        let activeUserJson = JSON.stringify(activeUser);
+        localStorage.setItem('activeUser', activeUserJson);
+        //await backend.setItem('activeUser', JSON.stringify(activeUser));
         await window.open('summary.html', '_self');
     } else {
         document.getElementById('failed-login').classList.remove('d-none');
@@ -57,7 +59,9 @@ function hideFailedLoginAndUserSignUP() {
  */
 async function openGuestStartScreen() { // Log in as a guest
     guestUser.push({ 'name': 'Guest User', 'email': '', 'password': '' });
-    await backend.setItem('guestUser', guestUser); // save to backend
+    let guestUserJson = JSON.stringify(guestUser);
+    localStorage.setItem('guestUser', guestUserJson);
+    //await backend.setItem('guestUser', guestUser); // save to backend
     window.open("summary.html", "_self");
 }
 

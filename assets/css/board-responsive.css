@@ -106,7 +106,7 @@
     }
 
     .scrollbar-task {
-        height: 19vh;
+        height: 31vh;
     }
 
     .margin-top-for-more-distance {
@@ -486,7 +486,7 @@
     }
 
     .scrollbar-task {
-        height: 19vh;
+        height: 31vh;
     }
 
     .margin-top-for-more-distance {
@@ -777,6 +777,10 @@
         display: none;
     }
 
+    .subtask-container-open-task {
+        margin-right: 120px;
+    }
+
     .checkbox-subtask {
         margin-left: 10px !important;
     }
@@ -881,7 +885,7 @@
     }
 
     .scrollbar-task {
-        height: 20vh;
+        height: 31vh;
     }
 
     .container-tasks {
@@ -1211,7 +1215,7 @@
     }
 
     .scrollbar-task {
-        height: 20vh;
+        height: 31vh;
     }
 
     .container-tasks {
@@ -1513,7 +1517,7 @@
     }
 
     .scrollbar-task {
-        height: 20vh;
+        height: 31vh;
     }
 
     .container-tasks {

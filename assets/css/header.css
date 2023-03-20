@@ -44,7 +44,8 @@ header {
     height: 45px;
     width: 45px;
     border-radius: 100%;
-    background: url(../img/header/user1.png)
+    background: url(../img/header/profile.png);
+    background-repeat: no-repeat;
 }
 
 .header-user-image:hover {

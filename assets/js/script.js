@@ -22,5 +22,7 @@ async function includeHTML() {
         }
     }
     await downloadFromServer(); // wait for server
-    activeUser = JSON.parse(backend.getItem('activeUser')) || [];
+    activeUserAsJson = localStorage.getItem('activeUser');
+    activeUser = JSON.parse(activeUserAsJson) || [];
+    //activeUser = JSON.parse(backend.getItem('activeUser')) || [];
 }

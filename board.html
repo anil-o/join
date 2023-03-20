@@ -58,7 +58,7 @@
         <div class="second-container">
 
             <div ondrop="moveTo('todo')" ondragover="allowDrop(event)" class="container-tasks">
-                <div id="todoChild" onclick="openForm(event)" class="child-container-tasks">
+                <div id="todoChild" onclick="openForm(event, 'todo')" class="child-container-tasks">
                     <div class="title-area">To do</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
@@ -68,7 +68,7 @@
             </div>
 
             <div ondrop="moveTo('inProgress')" ondragover="allowDrop(event)" class="container-tasks">
-                <div id=" todoChild" onclick="openForm(event)"
+                <div id=" todoChild" onclick="openForm(event, 'inProgress')"
                     class="child-container-tasks margin-top-for-more-distance">
                     <div class="title-area">In Progress</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
@@ -79,7 +79,7 @@
             </div>
 
             <div ondrop="moveTo('awaitingFeedback')" ondragover="allowDrop(event)" class="container-tasks">
-                <div id="todoChild" onclick="openForm(event)"
+                <div id="todoChild" onclick="openForm(event, 'awaitingFeedback')"
                     class="child-container-tasks margin-top-for-more-distance">
                     <div class="title-area">Awaiting Feedback</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
@@ -90,7 +90,7 @@
             </div>
 
             <div ondrop="moveTo('done')" ondragover="allowDrop(event)" class="container-tasks">
-                <div id=" todoChild" onclick="openForm(event)"
+                <div id=" todoChild" onclick="openForm(event, 'done')"
                     class="child-container-tasks margin-top-for-more-distance">
                     <div class="title-area">Done</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
@@ -225,7 +225,7 @@
 
                         <div class="parent-subtask-div">
                             <input class="subtask-popup" type="text" id="subtaskPopup" name="subtaskPopup"
-                                placeholder="Add a new subtask" required></input>
+                                placeholder="Add a new subtask"></input>
                             <img class="img-plus-subtask" src="assets/img/board/plus.png">
                         </div>
 

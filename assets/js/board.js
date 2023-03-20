@@ -11,6 +11,7 @@ let j = 0;
 let currentPrior;
 let currentPriorEdit;
 let splitFirstAndSecondNameOfAssignedAsArray;
+let currentSubtaskCheckedOrNot = "";
 let firstNameLetter = ['M', 'M', 'A'];
 let secondNameLetter = ['H', 'K', 'O'];
 let nameIsChecked = [];
@@ -31,6 +32,8 @@ let splitFirstAndSecondNameOfAssignedAsArrayEdit;
 let alreadyEmpty = true;
 let counter = 0;
 let amountOfAssignedMembers = 4;
+let indexCheckbox;
+let getStatus;
 
 /**
 * load task from server
@@ -72,7 +75,7 @@ function identifyId() {
  */
 function getCounter() {
     let nameisCheckedJsonLength = nameisCheckedJson.length - 1;
-    if (counter > 0 || nameisCheckedJsonLength >= 0) { 
+    if (counter > 0 || nameisCheckedJsonLength >= 0) {
         let counterForTask = nameisCheckedJson[nameisCheckedJsonLength]['counterForDragging'];
         let counterLength = counterForTask.length - 1;
         counter = counterForTask[counterLength];
@@ -104,6 +107,9 @@ function createTodo() {
         changePrior();
         cleanValues();
         changeColorOfCategory();
+        if(getStatus != 'todo') {
+            whichFormIsOpen();
+        }
         addInBackend();
         oneHigherId();
         index++;
@@ -111,6 +117,21 @@ function createTodo() {
     } else {
         alert('Please select a priority');
     }
+}
+
+
+function whichFormIsOpen() {
+    if(getStatus == 'inProgress') {
+        allTasks[j]['status'] = 'inProgress';
+        updateBoard();
+    } else if(getStatus == 'awaitingFeedback') {
+        allTasks[j]['status'] = 'awaitingFeedback';
+        updateBoard();
+    } else if(getStatus == 'done') {
+        allTasks[j]['status'] = 'done';
+        updateBoard();
+    } 
+
 }
 
 /*function createNewContact() {
@@ -219,7 +240,7 @@ function saveEditDetailsAssigned(i) {
     if (checkedNewAssign) {
         pushInArrayAfterEdit(i);
         pushJsonInArrayASave();
-    } 
+    }
 }
 
 
@@ -436,6 +457,7 @@ function pushTask() {
         'status': 'todo',
         'id': j,
         'subtask': currentSubtaskValue,
+        'subtaskCheckbox': currentSubtaskCheckedOrNot,
     };
     allTasks.push(task);
 }
@@ -454,13 +476,14 @@ async function addInBackend() {
 * get all task from backend and update board
 */
 async function getTasksFromBackend() {
-    let allTasksAsJson = await backend.getItem('allTasks');
-    let nameisCheckedJsonAsJson = await backend.getItem('nameisCheckedJson');
-    if (allTasksAsJson != null) {
+    allTasks = await JSON.parse(backend.getItem('allTasks')) || [];
+    nameisCheckedJson = await JSON.parse(backend.getItem('nameisCheckedJson')) || [];
+    /*if (allTasksAsJson != null) {
         allTasks = JSON.parse(allTasksAsJson);
         nameisCheckedJson = JSON.parse(nameisCheckedJsonAsJson);
         updateBoard();
-    }
+    }*/
+    updateBoard();
 }
 
 
@@ -652,7 +675,8 @@ function loadIconAndLine() {
 /**
 * open the pop-up
 */
-function openForm(event) {
+function openForm(event, status) {
+    getStatus = status;
     event.stopPropagation();
     document.getElementById('overlayAddTask').classList.add('overlay-bg');
     document.getElementById('popup-window').style.display = 'unset';
@@ -708,6 +732,8 @@ function openTaskDetails(i, event) {
     changeColorPriorInShowDetails(i);
     changePriorShowDetails(i);
     changeCategoryShowDetails(i);
+    getIndexForCheckbox(i);
+    checkTaskCheckbox(i);
 }
 
 
@@ -849,7 +875,7 @@ function searchFilter() {
 function ifSearchFilterIsNotEmpty(search) {
     alreadyEmpty = true;
     for (let i = 0; i < allTasks.length; i++) {
-        if (allTasks[i]['title'].includes(search.value)) {
+        if (allTasks[i]['title'].toLowerCase().includes(search.value.toLowerCase())) {
             if (allTasks[i]['status'] == 'todo') {
                 todoFilter(i);
             }
@@ -960,3 +986,37 @@ function openAssignedToCheckboxBoard() {
     }
 }
 
+
+/**
+ * get index for Checkbox
+ */
+function getIndexForCheckbox(i) {
+    indexCheckbox = i;
+}
+
+
+/**
+ * check if checkbox subtask is checked
+ */
+function checkSubtaskIsCheckedOrNot() {
+    let checkboxSubtask = document.getElementById('subtaskCheckbox' + indexCheckbox);
+    if (checkboxSubtask.checked == false) {
+        currentSubtaskCheckedOrNot = 0;
+        allTasks[indexCheckbox]['subtaskCheckbox'] = currentSubtaskCheckedOrNot;
+    } else {
+        currentSubtaskCheckedOrNot = 1;
+        allTasks[indexCheckbox]['subtaskCheckbox'] = currentSubtaskCheckedOrNot;
+    }
+}
+
+
+/**
+ * check if checkbox subtask is checked when open task details after coming back to page
+ */
+function checkTaskCheckbox(i) {
+    if(allTasks[i]['subtaskCheckbox'] == 1) {
+        document.getElementById('subtaskCheckbox' + i).checked  = true;
+    } else if(allTasks[i]['subtaskCheckbox'] == 0) {
+        document.getElementById('subtaskCheckbox' + i).checked = false;
+    }
+}

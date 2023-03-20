@@ -33,14 +33,18 @@ let activeUser = [];
  */
 async function initStart() {
     await downloadFromServer(); // wait for server
-    activeUser = JSON.parse(backend.getItem('activeUser')) || [];
+    activeUserAsJson = localStorage.getItem('activeUser');
+    activeUser = JSON.parse(activeUserAsJson) || [];
+    //activeUser = JSON.parse(backend.getItem('activeUser')) || [];
 }
 
 /**
  * Empty array activeUser on login-screen
  */
 async function emptyActiveUser() {
-    await backend.setItem('activeUser', JSON.stringify(activeUser.length = 0));
+    let activeUserJson = JSON.stringify(activeUser);
+    localStorage.setItem('activeUser', activeUserJson);
+    //await backend.setItem('activeUser', JSON.stringify(activeUser.length = 0));
 }
 
 /**

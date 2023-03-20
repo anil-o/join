@@ -1056,6 +1056,7 @@ select {
     line-height: 120%;
     margin-bottom: 35px;
     word-break: break-word;
+    margin-right: 40px;
 }
 
 .subtask-title-open-task {
