@@ -34,6 +34,7 @@ let counter = 0;
 let amountOfAssignedMembers = 4;
 let indexCheckbox;
 let getStatus;
+let newCategory = [];
 
 /**
 * load task from server
@@ -103,11 +104,8 @@ function createTodo() {
         pushTask();
         let todo = document.getElementById('todo');
         todo.innerHTML += templateCreateTodo();
-        getAssigned();
-        changePrior();
-        cleanValues();
-        changeColorOfCategory();
-        if(getStatus != 'todo') {
+        createDesignTask();
+        if (getStatus != 'todo') {
             whichFormIsOpen();
         }
         addInBackend();
@@ -120,17 +118,28 @@ function createTodo() {
 }
 
 
+/**
+* create task design
+*/
+function createDesignTask() {
+    getAssigned();
+    changePrior();
+    cleanValues();
+    changeColorOfCategory();
+}
+
+
 function whichFormIsOpen() {
-    if(getStatus == 'inProgress') {
+    if (getStatus == 'inProgress') {
         allTasks[j]['status'] = 'inProgress';
         updateBoard();
-    } else if(getStatus == 'awaitingFeedback') {
+    } else if (getStatus == 'awaitingFeedback') {
         allTasks[j]['status'] = 'awaitingFeedback';
         updateBoard();
-    } else if(getStatus == 'done') {
+    } else if (getStatus == 'done') {
         allTasks[j]['status'] = 'done';
         updateBoard();
-    } 
+    }
 
 }
 
@@ -677,10 +686,27 @@ function loadIconAndLine() {
 */
 function openForm(event, status) {
     getStatus = status;
+    changeFormCategory();
     event.stopPropagation();
     document.getElementById('overlayAddTask').classList.add('overlay-bg');
     document.getElementById('popup-window').style.display = 'unset';
     document.getElementById('mainContainer').classList.add('hide-mobile');
+}
+
+
+/**
+* change form select category
+*/
+function changeFormCategory() {
+    getFromLocalStorage();
+    if (newCategory.length > 0) {
+        let category = document.getElementById('selectCategory');
+        category.innerHTML = openSelectTemplateNew();
+        let select = document.getElementById('category-popup');
+        for (let index = 0; index < newCategory.length; index++) {
+            select.innerHTML += addNewCategoryTemplateForm(newCategory[index]);
+        }
+    }
 }
 
 
@@ -728,12 +754,20 @@ function openTaskDetails(i, event) {
     document.getElementById('openTask').classList.add('open-position');
     let openTask = document.getElementById('openTask');
     openTask.innerHTML = templateOpenTaskDetails(i);
+    openSubtask(i);
     openTaskAssigned(i);
     changeColorPriorInShowDetails(i);
     changePriorShowDetails(i);
     changeCategoryShowDetails(i);
     getIndexForCheckbox(i);
     checkTaskCheckbox(i);
+}
+
+function openSubtask(i) {
+    if (allTasks[i]['subtask'] != "") {
+        let subtask = document.getElementById('subtaskDetailsEmptyOrNot' + i);
+        subtask.innerHTML = openSubtaskDetailsIfItsNotEmpty(i);
+    }
 }
 
 
@@ -788,7 +822,21 @@ function editShowDetails(i) {
     duedateEdit.value = allTasks[i]['duedate'];
     let subtasksEdit = document.getElementById('subtaskEdit');
     subtasksEdit.value = allTasks[i]['subtask'];
+    loadValueForAssign(i);
     changePriorColorByEdit(i);
+}
+
+
+/**
+ * load the value in assign
+*/
+function loadValueForAssign(i) {
+    for (let index = 0; index < nameisCheckedJson[i]['names'].length; index++) {
+        let assignValue = document.getElementById('nameEdit' + index);
+        if (nameisCheckedJson[i]['names'][index] == assignValue.value) {
+            assignValue.checked = true;
+        }
+    }
 }
 
 
@@ -998,14 +1046,16 @@ function getIndexForCheckbox(i) {
 /**
  * check if checkbox subtask is checked
  */
-function checkSubtaskIsCheckedOrNot() {
+async function checkSubtaskIsCheckedOrNot() {
     let checkboxSubtask = document.getElementById('subtaskCheckbox' + indexCheckbox);
     if (checkboxSubtask.checked == false) {
         currentSubtaskCheckedOrNot = 0;
         allTasks[indexCheckbox]['subtaskCheckbox'] = currentSubtaskCheckedOrNot;
+        await backend.setItem('allTasks', JSON.stringify(allTasks));
     } else {
         currentSubtaskCheckedOrNot = 1;
         allTasks[indexCheckbox]['subtaskCheckbox'] = currentSubtaskCheckedOrNot;
+        await backend.setItem('allTasks', JSON.stringify(allTasks));
     }
 }
 
@@ -1014,9 +1064,11 @@ function checkSubtaskIsCheckedOrNot() {
  * check if checkbox subtask is checked when open task details after coming back to page
  */
 function checkTaskCheckbox(i) {
-    if(allTasks[i]['subtaskCheckbox'] == 1) {
-        document.getElementById('subtaskCheckbox' + i).checked  = true;
-    } else if(allTasks[i]['subtaskCheckbox'] == 0) {
-        document.getElementById('subtaskCheckbox' + i).checked = false;
+    if (allTasks[i]['subtask'] != "") {
+        if (allTasks[i]['subtaskCheckbox'] == 1) {
+            document.getElementById('subtaskCheckbox' + i).checked = true;
+        } else if (allTasks[i]['subtaskCheckbox'] == 0) {
+            document.getElementById('subtaskCheckbox' + i).checked = false;
+        }
     }
 }

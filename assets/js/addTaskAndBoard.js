@@ -4,7 +4,7 @@ let checkCurrentPrior;
 * create random color
 */
 function randomColor(i) {
-    let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    let randomColor = Math.floor(Math.random() * 16777215).toString(16);
     currentBgColor.push(randomColor);
     document.getElementById('assignedForInitialLetters' + i).style.background = `#${randomColor}`;
 }
@@ -106,7 +106,7 @@ function changeColorUrgent() {
 * create random color for edit
 */
 function randomColorEdit() {
-    let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    let randomColor = Math.floor(Math.random() * 16777215).toString(16);
     currentBgColor.push(randomColor);
 }
 
@@ -241,24 +241,96 @@ function changeColorAfterCreateTaskReverse() {
 function selectCategory(category, categoryAddColor) {
     if (category == 'Sales') {
         categoryAddColor.classList.add('sales');
-    }
-    if (category == 'Design') {
+    } else if (category == 'Design') {
         categoryAddColor.classList.add('design');
-    }
-    if (category == 'Backoffice') {
+    } else if (category == 'Backoffice') {
         categoryAddColor.classList.add('backoffice');
-    }
-    if (category == 'Marketing') {
+    } else if (category == 'Marketing') {
         categoryAddColor.classList.add('marketing');
-    }
-    if (category == 'IT') {
+    } else if (category == 'IT') {
         categoryAddColor.classList.add('it');
-    }
-    if (category == 'Media') {
+    } else if (category == 'Media') {
         categoryAddColor.classList.add('media');
+    } else {
+        let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        categoryAddColor.style.background = `#${randomColor}`;
     }
 }
 
+
+/**
+ * create a new category inputfield
+ */
+function createNewCategory(selectedCategory) {
+    if (selectedCategory == 'New Category') {
+        let hideCategory = document.getElementById('selectCategory');
+        hideCategory.classList.add('d-none');
+        hideCategory.innerHTML = createNewCategoryTemplate();
+        let closeCategory = document.getElementById('openNewCategoryInputfield');
+        closeCategory.classList.remove('d-none');
+    }
+}
+
+
+/**
+ * open again select category
+ */
+function openSelect() {
+    let hideCategory = document.getElementById('selectCategory');
+    hideCategory.classList.remove('d-none');
+    let closeCategory = document.getElementById('openNewCategoryInputfield');
+    closeCategory.classList.add('d-none');
+    hideCategory.innerHTML = openSelectTemplate();
+    let select = document.getElementById('category-popup');
+    if (newCategory.length > 0) {
+        for (let index = 0; index < newCategory.length; index++) {
+            select.innerHTML += addNewCategoryTemplate(newCategory[index]);
+        }
+    }
+}
+
+
+/**
+ * add a new category
+ */
+function addNewCategory() {
+    let category = document.getElementById('selectCategory');
+    category.classList.remove('d-none');
+    let getNewCategory = document.getElementById('newcategory');
+    let closeCategory = document.getElementById('openNewCategoryInputfield');
+    closeCategory.classList.add('d-none');
+    category.innerHTML = openSelectTemplate();
+    let select = document.getElementById('category-popup');
+    newCategory.push(getNewCategory.value);
+    localStorageSave(newCategory);
+    for (let index = 0; index < newCategory.length; index++) {
+        select.innerHTML += addNewCategoryTemplate(newCategory[index]);
+    }
+    currentCategory = getNewCategory.value;
+}
+
+
+/**
+ * save in local storage
+ */
+function localStorageSave(newCategory) {
+    let newCategoryJSON = JSON.stringify(newCategory);
+    if (newCategoryJSON != null) {
+        newCategory = JSON.parse(newCategoryJSON);
+    }
+    localStorage.setItem('newCategoryJSON', newCategoryJSON);
+}
+
+
+/**
+ * get it from local storage
+ */
+function getFromLocalStorage() {
+    let newCategoryJSON = localStorage.getItem('newCategoryJSON');
+    if (newCategoryJSON != null) {
+        newCategory = JSON.parse(newCategoryJSON);
+    }
+}
 
 
 /**
@@ -335,9 +407,9 @@ function changePriorShowDetails(i) {
 */
 function changeColorPriorDetailUrgent(i) {
     let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
-        let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
-        firstImage.src = "assets/img/board/arrow-urgent.svg";
-        secondImage.src = "assets/img/board/arrow-urgent.svg";
+    let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
+    firstImage.src = "assets/img/board/arrow-urgent.svg";
+    secondImage.src = "assets/img/board/arrow-urgent.svg";
 }
 
 /**
@@ -357,11 +429,11 @@ function changeColorPriorDetailMedium(i) {
 */
 function changeColorPriorDetailLow(i) {
     let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
-        let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
-        firstImage.style = 'top: -5px';
-        secondImage.style = 'top: 0px';
-        firstImage.src = "assets/img/board/arrow-low.svg";
-        secondImage.src = "assets/img/board/arrow-low.svg";
+    let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
+    firstImage.style = 'top: -5px';
+    secondImage.style = 'top: 0px';
+    firstImage.src = "assets/img/board/arrow-low.svg";
+    secondImage.src = "assets/img/board/arrow-low.svg";
 }
 
 

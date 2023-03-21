@@ -135,12 +135,8 @@ function templateOpenTaskDetails(i) {
     <div class="title-open-task">${allTasks[i]['title']}</div>
     <div class="description-open-task">${allTasks[i]['description']}</div>
 
-    <div>
-        <div class="subtask-title-open-task">Subtask:</div>
-            <div class="subtask-container-open-task">
-                <div class="subtask-value-open-task">${allTasks[i]['subtask']}</div>
-                <div><input onclick="checkSubtaskIsCheckedOrNot()" type="checkbox" id="subtaskCheckbox${i}" name="subtaskCheckbox${i}" value="subtaskCheckbox${i}"></div>
-            </div>
+    <div id="subtaskDetailsEmptyOrNot${i}">
+        
     </div>
 
     <div class="duedate-open-task">Due date: <span class="date-open-task">${allTasks[i]['duedate']}</span></div>
@@ -169,12 +165,28 @@ function templateOpenTaskDetails(i) {
 </div>`;
 }
 
+
+function openSubtaskDetailsIfItsNotEmpty(i) {
+    return `<div class="subtask-title-open-task">Subtask:</div>
+    <div class="subtask-container-open-task">
+        <div class="subtask-value-open-task">${allTasks[i]['subtask']}</div>
+        <div><input onclick="checkSubtaskIsCheckedOrNot()" type="checkbox" id="subtaskCheckbox${i}" name="subtaskCheckbox${i}" value="subtaskCheckbox${i}"></div>
+    </div>`;
+}
+
+
 function openTaskAssignedTemplate(i, index) {
     return `
         <div class="open-task-assigned-group">
             <div  id="assignedForInitialLettersDetails${nameisCheckedJson[i]['counterForDragging'][index]}" class="profile-assigned-open-task">${nameisCheckedJson[i]['firstletterChecked'][index]}${nameisCheckedJson[i]['secondletterChecked'][index]}</div>
             <div class="name-assigned-open-task">${nameisCheckedJson[i]['names'][index]}</div>
         </div>`;
+}
+
+
+function addNewCategoryTemplateForm(addTheNewCategory) {
+    return `
+    <option value="${addTheNewCategory}">${addTheNewCategory}</option>`;
 }
 
 
@@ -302,5 +314,54 @@ function templateEditShowDetails(i) {
 }
 
 
+function openSelectTemplate() {
+    return `<select onclick="closeDropDown()" class="category-popup" id="category-popup"
+    onChange="identifySelectedCategory(this);" required>
+    <option value="" disabled selected>Select task category</option>
+    <option value="New Category">New Category</option>
+    <option value="Sales">Sales</option>
+    <option value="Design">Design</option>
+    <option value="Backoffice">Backoffice</option>
+    <option value="Marketing">Marketing</option>
+    <option value="IT">IT</option>
+    <option value="Media">Media</option>
+    </select><br>
+    <div class="img-arrow-select-board-div"><img src="assets/img/board/vector_arrow_black.png">
+    </div>`;
+}
+
+
+function createNewCategoryTemplate() {
+    return `
+    <div id="openNewCategoryInputfield">
+        <input class="title-popup" type="text" id="newcategory" name="newcategory" placeholder="New category name">
+        <img onclick="openSelect()" class="x-mark-select" src="assets/img/board/x-mark.png">
+        <div class="seperate-line"></div>
+        <img onclick="addNewCategory()" class="check-select" src="assets/img/board/check.png">
+    </div>`;
+}
+
+
+function addNewCategoryTemplate(addTheNewCategory) {
+    return `
+    <option value="${addTheNewCategory}" selected>${addTheNewCategory}</option>`;
+}
+
+
+function openSelectTemplateNew() {
+    return `<select onclick="closeDropDown()" class="category-popup" id="category-popup"
+    onChange="identifySelectedCategory(this);" required>
+    <option value="" disabled selected>Select task category</option>
+    <option value="New Category">New Category</option>
+    <option value="Sales">Sales</option>
+    <option value="Design">Design</option>
+    <option value="Backoffice">Backoffice</option>
+    <option value="Marketing">Marketing</option>
+    <option value="IT">IT</option>
+    <option value="Media">Media</option>
+    </select><br>
+    <div class="img-arrow-select-board-div"><img src="assets/img/board/vector_arrow_black.png">
+    </div>`;
+}
 
 

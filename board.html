@@ -123,10 +123,11 @@
 
                         <div class="margin-popup"><label class="pop-up-child" for="category-popup">Category</label><br>
                         </div>
-                        <div class="category-parent-div-board">
+                        <div id="selectCategory" class="category-parent-div-board">
                             <select onclick="closeDropDown()" class="category-popup" id="category-popup"
                                 onChange="identifySelectedCategory(this);" required>
                                 <option value="" disabled selected>Select task category</option>
+                                <option classs="new-category" value="New Category">New Category</option>
                                 <option value="Sales">Sales</option>
                                 <option value="Design">Design</option>
                                 <option value="Backoffice">Backoffice</option>

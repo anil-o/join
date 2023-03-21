@@ -52,10 +52,11 @@
                     <div class="margin-popup"><label class="pop-up-child popup-child-for-left-side pop-up-child-addedTask"
                             for="category-popup">Category</label><br>
                     </div>
-                    <div class="category-parent-div">
+                    <div id="selectCategory" class="category-parent-div">
                         <select onclick="closeDropDownAddTask()" class="category-popup category-popup-addTask" id="category-popup"
                             onChange="identifySelectedCategory(this);" required>
                             <option value="" disabled selected>Select task category</option>
+                            <option value="New Category">New Category</option>
                             <option value="Sales">Sales</option>
                             <option value="Design">Design</option>
                             <option value="Backoffice">Backoffice</option>

@@ -12,8 +12,8 @@
     }
 
     .img-arrow-select-board-div-assigned {
-        top: 12px;
-        right: -6px;
+        top: 8px;
+        right: 19px;
     }
 
     .checkbox-subtask {
@@ -138,6 +138,7 @@
 
     /* add task*/
     .add-task-pop-up {
+        top: 0;
         left: 0;
         border-radius: 0;
         background-color: #F5F5F5;
@@ -173,7 +174,9 @@
     }
 
     .assignedto-parent-div-board {
+        margin-left: 26px;
         width: 300px;
+        font-size: 20px;
     }
 
     .assignedto-popup {
@@ -395,8 +398,8 @@
     }
 
     .img-arrow-select-board-div-assigned {
-        top: 12px;
-        right: -6px;
+        top: 8px;
+        right: 19px;
     }
 
     .checkbox-subtask {
@@ -518,6 +521,7 @@
 
     /* add task*/
     .add-task-pop-up {
+        top: 0;
         left: 0;
         border-radius: 0;
         background-color: #F5F5F5;
@@ -557,6 +561,7 @@
     }
 
     .assignedto-parent-div-board {
+        margin-left: 26px;
         width: 360px;
     }
 
@@ -790,7 +795,9 @@
     }
 
     .assignedto-parent-div-board {
-        width: 440px !important;
+        width: 430px !important;
+        margin-left: 10px;
+        margin-bottom: unset;
     }
 
     .img-arrow-select-board-div-assigned {
@@ -915,6 +922,7 @@
 
     /* add task*/
     .add-task-pop-up {
+        top: 0;
         left: 0;
         border-radius: 0;
         background-color: #F5F5F5;
@@ -954,10 +962,6 @@
         width: 430px;
         margin-left: 10px;
         margin-bottom: unset;
-    }
-
-    .assignedto-parent-div-board {
-        width: 430px;
     }
 
     .assignedto-popup {
@@ -1130,16 +1134,6 @@
         display: none;
     }
 
-    .add-task-pop-up {
-        top: 0;
-        left: 0;
-        border-radius: 0;
-        background-color: #F5F5F5;
-        width: 100vw;
-        height: 100vh;
-        overflow-y: scroll;
-    }
-
     .btn-for-mobile {
         cursor: pointer;
         background: #2A3647;
@@ -1259,11 +1253,11 @@
 
     /* add task*/
     .add-task-pop-up {
-        top: 4px;
+        top: 0;
         left: 0;
         border-radius: 0;
         background-color: #F5F5F5;
-        width: 100%;
+        width: 100vw;
     }
 
     .margin-popup {

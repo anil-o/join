@@ -255,6 +255,35 @@ body {
     padding-top: 8px;
     padding-left: 25px;
     padding-right: 25px;
+    padding-top: 10px;
+}
+
+.x-mark-select {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+    vertical-align: bottom;
+    position: absolute;
+    top: 17px;
+    right: 52px;
+}
+
+.seperate-line {
+    position: absolute;
+    top: 14px;
+    right: 43px;
+    height: 28px;
+    width: 1px;
+    background: black;
+}
+
+.check-select {
+    margin-left: 8px;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 17px;
+    right: 10px;
 }
 
 .title {
@@ -1268,4 +1297,8 @@ input[type="checkbox"]:checked::before {
 
 .subtask-margin {
     margin-left: 8px;
+}
+
+.category-popup option:nth-child(2) {
+    font-weight:bold;
 }

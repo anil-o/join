@@ -29,19 +29,35 @@ async function login() { // Log in when signed up
             foundUser = users[i];
             break;
         }
-    }
-    if (foundUser) {
-        activeUser.push(foundUser.name);
-        activeUser.push(foundUser.email);
-        activeUser.push(foundUser.password);
-        let activeUserJson = JSON.stringify(activeUser);
-        localStorage.setItem('activeUser', activeUserJson);
-        //await backend.setItem('activeUser', JSON.stringify(activeUser));
+    } if (foundUser) {
+        userNotFounded(foundUser);
         await window.open('summary.html', '_self');
     } else {
-        document.getElementById('failed-login').classList.remove('d-none');
-        document.getElementById('login-window').classList.add('login-window-failed');
+        openFailedLogin();
     }
+}
+
+
+/**
+ * LOG IN FUNCTIONALTY: 
+ * User not found
+ */
+function userNotFounded(foundUser) {
+    activeUser.push(foundUser.name);
+    activeUser.push(foundUser.email);
+    activeUser.push(foundUser.password);
+    let activeUserJson = JSON.stringify(activeUser);
+    localStorage.setItem('activeUser', activeUserJson);
+}
+
+
+/**
+ * LOG IN FUNCTIONALTY: 
+ * Open failed window
+ */
+function openFailedLogin() {
+    document.getElementById('failed-login').classList.remove('d-none');
+    document.getElementById('login-window').classList.add('login-window-failed');
 }
 
 /**

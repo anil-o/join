@@ -160,5 +160,6 @@ function identifySelectedAssigneEdit(sel) {
 */
 function identifySelectedCategory(sel) {
     currentCategory = sel.options[sel.selectedIndex].text;
+    createNewCategory(currentCategory);
 }
 
